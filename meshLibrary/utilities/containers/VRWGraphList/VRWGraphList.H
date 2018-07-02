@@ -47,6 +47,10 @@ namespace Foam
 namespace Module
 {
 
+// Forward declarations
+class VRWGraphList;
+Ostream& operator<<(Ostream&, const VRWGraphList&);
+
 /*---------------------------------------------------------------------------*\
                         Class VRWGraphList Declaration
 \*---------------------------------------------------------------------------*/

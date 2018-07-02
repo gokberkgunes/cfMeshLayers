@@ -51,7 +51,9 @@ namespace Foam
 namespace Module
 {
 
+// Forward declarations
 class VRWGraph;
+Ostream& operator<<(Ostream&, const VRWGraph&);
 
 class rowElement
 {
