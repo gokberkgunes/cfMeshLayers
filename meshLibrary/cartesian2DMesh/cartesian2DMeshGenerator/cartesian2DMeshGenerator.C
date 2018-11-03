@@ -286,7 +286,7 @@ Foam::Module::cartesian2DMeshGenerator::cartesian2DMeshGenerator
             checkMeshDict cmd(meshDict_);
         }
 
-        fileName surfaceFile = meshDict_.lookup("surfaceFile");
+        fileName surfaceFile(meshDict_.lookup("surfaceFile"));
         if (Pstream::parRun())
         {
             surfaceFile = ".."/surfaceFile;

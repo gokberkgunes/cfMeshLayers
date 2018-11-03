@@ -322,7 +322,7 @@ Foam::Module::tetMeshGenerator::tetMeshGenerator(const Time& time)
             checkMeshDict cmd(meshDict_);
         }
 
-        const fileName surfaceFile = meshDict_.lookup("surfaceFile");
+        const fileName surfaceFile(meshDict_.lookup("surfaceFile"));
 
         surfacePtr_ = new triSurf(runTime_.path()/surfaceFile);
 
