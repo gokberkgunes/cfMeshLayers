@@ -27,7 +27,7 @@ License
 #include "pointIOField.H"
 #include "IOobjectList.H"
 #include "pointSet.H"
-#include "ListOps.H"
+#include "stringListOps.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -89,17 +89,18 @@ Foam::labelList Foam::Module::triSurfFacets::findPatches
     const word& patchName
 ) const
 {
-    const labelList ids = findIndices(patchNames(), patchName);
+    const labelList patchIDs =
+        findMatchingStrings(regExp(patchName), patchNames());
 
     # ifdef DEBUGtriSurf
-    if (ids.empty())
+    if (patchIDs.empty())
     {
         WarningInFunction
             << "Cannot find any patch names matching " << patchName << endl;
     }
     # endif
 
-    return ids;
+    return patchIDs;
 }
 
 
