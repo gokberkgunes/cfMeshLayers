@@ -23,7 +23,7 @@ License
 
 Description
     Performs point relocations in the mesh (smoothing) in order to
-    improve quality measures. It does not make the mesh invalied.
+    improve quality measures. It does not make the mesh invalid.
 
 \*---------------------------------------------------------------------------*/
 
@@ -38,6 +38,13 @@ using namespace Foam::Module;
 
 int main(int argc, char *argv[])
 {
+    argList::addNote
+    (
+        "(cfmesh)\n"
+        "Performs point relocations in the mesh (smoothing) in order to"
+        " improve quality measures."
+    );
+
     argList::validArgs.clear();
 
     argList::addOption("nLoops", "int");

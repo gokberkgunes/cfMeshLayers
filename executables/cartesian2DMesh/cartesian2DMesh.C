@@ -25,7 +25,7 @@ Application
     Generates cartesian mesh
 
 Description
-    Generates a 2D cartesian mesh
+    Takes a triangulated surface and generates a 2D cartesian mesh
 
 \*---------------------------------------------------------------------------*/
 
@@ -36,14 +36,19 @@ using namespace Foam;
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-// Main program:
-
 int main(int argc, char *argv[])
 {
+    argList::addNote
+    (
+        "(cfmesh)\n"
+        "Takes a triangulated surface"
+        " and generates a 2D cartesian mesh"
+    );
+
     #include "setRootCase.H"
     #include "createTime.H"
 
-    // 2d cartesian mesher cannot be run in parallel
+    // 2D cartesian mesher cannot be run in parallel
     argList::noParallel();
 
     Module::cartesian2DMeshGenerator cmg(runTime);

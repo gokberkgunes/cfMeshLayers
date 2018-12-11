@@ -43,11 +43,17 @@ using namespace Foam::Module;
 
 int main(int argc, char *argv[])
 {
+    argList::addNote
+    (
+        "(cfmesh)\n"
+        "Finds feature edges and corners of a triangulated surface"
+    );
+
     argList::noParallel();
     argList::validArgs.clear();
     argList::validArgs.append("input surface file");
     argList::validArgs.append("output surface file");
-    argList::addOption("angle", "scalar");
+    argList::addOption("angle", "scalar", "feature angle (degrees)");
     argList args(argc, argv);
 
     const fileName inFileName(args[1]);

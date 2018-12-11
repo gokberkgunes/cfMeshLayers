@@ -22,7 +22,7 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Description
-    Creates surface patches from surface subsets
+    Convert a FMS file to another surface format
 
 \*---------------------------------------------------------------------------*/
 
@@ -101,6 +101,12 @@ void exportFeatureEdges
 
 int main(int argc, char *argv[])
 {
+    argList::addNote
+    (
+        "(cfmesh)\n"
+        "Convert a FMS file to another surface format."
+    );
+
     argList::noParallel();
     argList::validArgs.clear();
 

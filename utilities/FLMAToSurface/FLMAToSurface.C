@@ -40,6 +40,12 @@ using namespace Foam::Module;
 
 int main(int argc, char *argv[])
 {
+    argList::addNote
+    (
+        "(cfmesh)\n"
+        "Reads the AVL's surface mesh format."
+    );
+
     argList::noParallel();
     argList::validArgs.clear();
 

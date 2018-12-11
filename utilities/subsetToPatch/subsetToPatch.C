@@ -119,6 +119,12 @@ void makePatchFromSubset
 
 int main(int argc, char *argv[])
 {
+    argList::addNote
+    (
+        "(cfmesh)\n"
+        "Creates surface patches from surface subsets"
+    );
+
     argList::noParallel();
     argList::validArgs.clear();
 

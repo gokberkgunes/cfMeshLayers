@@ -326,6 +326,13 @@ void writeFacetsToVTK
 
 int main(int argc, char *argv[])
 {
+    argList::addNote
+    (
+        "(cfmesh)\n"
+        "Convert a surface file to VTK multiblock dataset format,"
+        " including the patches, feature edges and surface features."
+    );
+
     argList::noParallel();
     argList::validArgs.clear();
 

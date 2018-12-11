@@ -25,7 +25,7 @@ Application
     Generates cartesian mesh
 
 Description
-    - takes a triangulated surface and generates a cartesian mesh
+    Takes a triangulated surface and generates a cartesian mesh
 
 \*---------------------------------------------------------------------------*/
 
@@ -38,6 +38,13 @@ using namespace Foam;
 
 int main(int argc, char *argv[])
 {
+    argList::addNote
+    (
+        "(cfmesh)\n"
+        "Takes a triangulated surface"
+        " and generates a cartesian mesh"
+    );
+
     #include "setRootCase.H"
     #include "createTime.H"
 

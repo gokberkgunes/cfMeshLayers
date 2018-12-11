@@ -108,6 +108,13 @@ void layerRefinement(polyMeshGen& mesh, const dictionary& meshDict)
 
 int main(int argc, char *argv[])
 {
+    argList::addNote
+    (
+        "(cfmesh)\n"
+        "Generate boundary layers in the existing mesh,"
+        " based on the settings given in meshDict."
+    );
+
     argList::addBoolOption("2DLayers");
 
     #include "setRootCase.H"

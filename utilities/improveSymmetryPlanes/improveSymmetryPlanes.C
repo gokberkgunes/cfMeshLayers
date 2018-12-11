@@ -38,6 +38,13 @@ using namespace Foam::Module;
 
 int main(int argc, char *argv[])
 {
+    argList::addNote
+    (
+        "(cfmesh)\n"
+        "Ensures that all mesh points belonging to a symmetryPlane are"
+        " in a plane."
+    );
+
     #include "setRootCase.H"
     #include "createTime.H"
 

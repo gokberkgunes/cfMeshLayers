@@ -22,7 +22,7 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Description
-    Reads the specified surface and writes it in the fms format.
+    Perform surface mesh checks
 
 \*---------------------------------------------------------------------------*/
 
@@ -40,6 +40,12 @@ using namespace Foam::Module;
 
 int main(int argc, char *argv[])
 {
+    argList::addNote
+    (
+        "(cfmesh)\n"
+        "Perform surface mesh checks"
+    );
+
     argList::noParallel();
     argList::validArgs.clear();
     argList::validArgs.append("input surface file");

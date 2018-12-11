@@ -22,7 +22,7 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Description
-    Finds feature edges and corners of a triangulated surface
+    Import a subset of a surface
 
 \*---------------------------------------------------------------------------*/
 
@@ -42,6 +42,12 @@ using namespace Foam::Module;
 
 int main(int argc, char *argv[])
 {
+    argList::addNote
+    (
+        "(cfmesh)\n"
+        "Import a subset of a surface"
+    );
+
     argList::noParallel();
     argList::validArgs.clear();
     argList::validArgs.append("master surface file");
