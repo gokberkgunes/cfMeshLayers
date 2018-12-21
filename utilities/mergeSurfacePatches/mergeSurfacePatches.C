@@ -296,6 +296,12 @@ autoPtr<triSurf> mergeSurfacePatches
 
 int main(int argc, char *argv[])
 {
+    argList::addNote
+    (
+        "(cfmesh)\n"
+        "Merge the supplied list of patches onto a single patch."
+    );
+
     argList::noParallel();
     argList::validArgs.clear();
 

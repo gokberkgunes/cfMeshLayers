@@ -40,6 +40,12 @@ using namespace Foam::Module;
 
 int main(int argc, char *argv[])
 {
+    argList::addNote
+    (
+        "(cfmesh)\n"
+        "Converts specified patches into subsets"
+    );
+
     argList::noParallel();
     argList::validArgs.clear();
 

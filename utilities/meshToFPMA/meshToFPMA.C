@@ -37,6 +37,12 @@ using namespace Foam::Module;
 
 int main(int argc, char *argv[])
 {
+    argList::addNote
+    (
+        "(cfmesh)\n"
+        "Writes the mesh in fpma format readable by AVL's CfdWM"
+    );
+
     #include "setRootCase.H"
     #include "createTime.H"
 

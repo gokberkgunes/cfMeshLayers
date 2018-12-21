@@ -46,6 +46,10 @@ namespace Foam
 namespace Module
 {
 
+// Forward declarations
+class boxScaling;
+Ostream& operator<<(Ostream&, const boxScaling&);
+
 /*---------------------------------------------------------------------------*\
                          Class boxScaling Declaration
 \*---------------------------------------------------------------------------*/

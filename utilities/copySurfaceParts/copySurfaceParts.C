@@ -22,7 +22,7 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Description
-    Finds feature edges and corners of a triangulated surface
+    Copy parts of a surface mesh
 
 \*---------------------------------------------------------------------------*/
 
@@ -41,6 +41,12 @@ using namespace Foam::Module;
 
 int main(int argc, char *argv[])
 {
+    argList::addNote
+    (
+        "(cfmesh)\n"
+        "Copy parts of a surface mesh"
+    );
+
     argList::noParallel();
     argList::validArgs.clear();
     argList::validArgs.append("input surface file");

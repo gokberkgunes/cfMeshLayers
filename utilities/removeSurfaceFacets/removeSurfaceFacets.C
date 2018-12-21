@@ -38,6 +38,13 @@ using namespace Foam::Module;
 
 int main(int argc, char *argv[])
 {
+    argList::addNote
+    (
+        "(cfmesh)\n"
+        "Reads the surface mesh, remove the selected facets"
+        " and writes the modified mesh into a new file"
+    );
+
     argList::noParallel();
     argList::validArgs.clear();
 

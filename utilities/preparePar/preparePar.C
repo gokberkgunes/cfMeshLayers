@@ -25,7 +25,7 @@ Application
     Prepares the case for a parallel mesh generation run
 
 Description
-    - creates processor* directories which contain data for processors
+    Creates processor* directories which contain data for processors
 
 \*---------------------------------------------------------------------------*/
 
@@ -41,6 +41,7 @@ int main(int argc, char *argv[])
 {
     argList::addNote
     (
+        "(cfmesh)\n"
         "Create processor directories in preparation for a parallel run"
     );
 

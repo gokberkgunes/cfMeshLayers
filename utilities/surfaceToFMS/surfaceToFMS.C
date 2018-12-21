@@ -37,9 +37,16 @@ using namespace Foam;
 
 int main(int argc, char *argv[])
 {
+    argList::addNote
+    (
+        "(cfmesh)\n"
+        "Reads the specified surface and writes it in the fms format"
+    );
+
     argList::noParallel();
     argList::validArgs.clear();
     argList::validArgs.append("input surface file");
+
     argList args(argc, argv);
 
     const fileName inFileName(args[1]);

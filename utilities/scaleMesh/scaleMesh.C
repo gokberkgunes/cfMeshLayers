@@ -37,6 +37,12 @@ using namespace Foam::Module;
 
 int main(int argc, char *argv[])
 {
+    argList::addNote
+    (
+        "(cfmesh)\n"
+        "Scales the mesh into other units"
+    );
+
     argList::validArgs.append("scalingFactor");
 
     #include "setRootCase.H"

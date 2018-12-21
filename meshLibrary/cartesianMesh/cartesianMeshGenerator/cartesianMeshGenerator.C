@@ -342,7 +342,7 @@ Foam::Module::cartesianMeshGenerator::cartesianMeshGenerator(const Time& time)
             checkMeshDict cmd(meshDict_);
         }
 
-        fileName surfaceFile = meshDict_.lookup("surfaceFile");
+        fileName surfaceFile(meshDict_.lookup("surfaceFile"));
         if (Pstream::parRun())
             surfaceFile = ".."/surfaceFile;
 

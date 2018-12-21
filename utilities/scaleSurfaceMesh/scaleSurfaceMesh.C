@@ -22,7 +22,7 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Description
-    Scales surface vertices by a precribed factor.
+    Scales surface vertices by a prescribed factor.
 
 \*---------------------------------------------------------------------------*/
 
@@ -39,6 +39,12 @@ using namespace Foam::Module;
 
 int main(int argc, char *argv[])
 {
+    argList::addNote
+    (
+        "(cfmesh)\n"
+        "Scales surface vertices by a prescribed factor"
+    );
+
     argList::noParallel();
     argList::validArgs.clear();
     argList::validArgs.append("input surface file");

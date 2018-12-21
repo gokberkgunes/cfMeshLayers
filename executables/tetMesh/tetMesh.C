@@ -38,6 +38,13 @@ using namespace Foam;
 
 int main(int argc, char *argv[])
 {
+    argList::addNote
+    (
+        "(cfmesh)\n"
+        "Takes a triangulated surface"
+        " and generates a tetrahedral mesh"
+    );
+
     #include "setRootCase.H"
     #include "createTime.H"
 
