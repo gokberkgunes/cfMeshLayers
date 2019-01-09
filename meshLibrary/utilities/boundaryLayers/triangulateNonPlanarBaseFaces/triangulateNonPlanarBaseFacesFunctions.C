@@ -81,8 +81,7 @@ bool Foam::Module::triangulateNonPlanarBaseFaces::findNonPlanarBoundaryFaces()
             );
 
             const point triCentre = tri.centre();
-            vector n = tri.normal();
-            n /= (mag(n) + VSMALL);
+            vector n = tri.unitNormal();
 
             forAll(bf, pI)
             {

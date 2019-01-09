@@ -202,7 +202,7 @@ void Foam::Module::meshSurfaceCheckInvertedVertices::checkVertices()
                 fCentres[bfI]
             );
 
-            vector nNext = triNext.normal();
+            vector nNext = triNext.areaNormal();
             scalar mNext = mag(nNext);
 
             // face has zero area
@@ -259,7 +259,7 @@ void Foam::Module::meshSurfaceCheckInvertedVertices::checkVertices()
                 points[bf.prevLabel(pI)]
             );
 
-            vector nPrev = triPrev.normal();
+            vector nPrev = triPrev.areaNormal();
             scalar mPrev = mag(nPrev);
 
             // face has zero area

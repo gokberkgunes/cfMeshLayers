@@ -57,7 +57,7 @@ void Foam::Module::symmetryPlaneOptimisation::detectSymmetryPlanes()
             for (label faceI = start; faceI < end; ++faceI)
             {
                 cs.first += faces[faceI].centre(points);
-                ns.first += faces[faceI].normal(points);
+                ns.first += faces[faceI].areaNormal(points);
             }
 
             cs.second = ns.second = boundaries[patchI].patchSize();

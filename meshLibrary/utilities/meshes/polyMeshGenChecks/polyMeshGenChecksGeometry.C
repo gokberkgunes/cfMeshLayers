@@ -702,7 +702,7 @@ bool Foam::Module::polyMeshGenChecks::checkMinTwist
                         fCentres[faceI]
                     );
 
-                    const vector triArea = triangle.normal();
+                    const vector triArea = triangle.areaNormal();
 
                     const scalar magTri = (mag(triArea) + VSMALL);
 
@@ -762,7 +762,7 @@ bool Foam::Module::polyMeshGenChecks::checkMinTwist
                     fCentres[faceI]
                 );
 
-                const vector triArea = triangle.normal();
+                const vector triArea = triangle.areaNormal();
 
                 const scalar magTri = mag(triArea);
 
@@ -857,7 +857,7 @@ bool Foam::Module::polyMeshGenChecks::checkMinTwist
                             fCentres[faceI]
                         );
 
-                        const vector triArea = triangle.normal();
+                        const vector triArea = triangle.areaNormal();
 
                         const scalar magTri = (mag(triArea) + VSMALL);
 
@@ -1356,11 +1356,7 @@ bool Foam::Module::polyMeshGenChecks::checkTriangleTwist
                         fCentres[faceI]
                     );
 
-                    vector prevN = tri.normal();
-
-                    const scalar magTri = mag(prevN) + VSMALL;
-
-                    prevN /= magTri;
+                    vector prevN = tri.unitNormal();
 
                     // compare with other possible triangles
                     for (label pJ = pI + 1; pJ < f.size(); ++pJ)
@@ -1372,11 +1368,7 @@ bool Foam::Module::polyMeshGenChecks::checkTriangleTwist
                             fCentres[faceI]
                         );
 
-                        vector triN = tri.normal();
-
-                        scalar magTriN = mag(triN) + VSMALL;
-
-                        triN /= magTriN;
+                        vector triN = tri.unitNormal();
 
                         if ((prevN & triN) < minTwist)
                         {
@@ -2264,7 +2256,7 @@ void Foam::Module::polyMeshGenChecks::checkFaceSkewness
         {
             const vector d = fCentres[faceI] - centres[own[faceI]];
 
-            vector n = faces[faceI].normal(points);
+            vector n = faces[faceI].areaNormal(points);
             const scalar magn = mag(n);
             if (magn > VSMALL)
             {

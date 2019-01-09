@@ -164,21 +164,19 @@ Foam::point Foam::Module::boundaryLayers::createNewVertex
 
                 if (treatPatches[patchLabel])
                 {
-                    normal += f.normal(points);
+                    normal += f.areaNormal(points);
                 }
                 else
                 {
-                    v += f.normal(points);
+                    v += f.areaNormal(points);
                 }
             }
 
-            const scalar magV = mag(v) + VSMALL;
-            v /= magV;
+            v.normalise();
 
             normal -= (normal & v)*v;
 
-            const scalar magN = mag(normal) + VSMALL;
-            normal /= magN;
+            normal.normalise();
 
             forAllRow(pointPoints, bpI, ppI)
             {
@@ -922,11 +920,11 @@ void Foam::Module::boundaryLayers::createNewEdgeVerticesParallel
 
                 if (treatPatches[patchLabel])
                 {
-                    normal[epI] += f.normal(points);
+                    normal[epI] += f.areaNormal(points);
                 }
                 else
                 {
-                    v[epI] += f.normal(points);
+                    v[epI] += f.areaNormal(points);
                 }
             }
         }

@@ -379,7 +379,7 @@ void Foam::Module::boundaryLayerOptimisation::calculateHairVectorsAtTheBoundary
                 forAllRow(edgeFaces, beI, befI)
                 {
                     const face& bf = bFaces[edgeFaces(beI, befI)];
-                    const vector fNormal = bf.normal(points);
+                    const vector fNormal = bf.areaNormal(points);
 
                     const label pos = bf.which(he.start());
 

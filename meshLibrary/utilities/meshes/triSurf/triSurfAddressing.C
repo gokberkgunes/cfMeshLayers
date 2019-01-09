@@ -311,8 +311,7 @@ void Foam::Module::triSurfAddressing::calculateFacetNormals() const
     # endif
     forAll(facets_, fI)
     {
-        vector v = facets_[fI].normal(points_);
-        v /= (mag(v) + VSMALL);
+        vector v = facets_[fI].unitNormal(points_);
         (*facetNormalsPtr_)[fI] = v;
     }
 }

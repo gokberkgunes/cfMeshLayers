@@ -353,7 +353,7 @@ void Foam::Module::triSurfaceCurvatureEstimator::calculateSurfaceCurvatures()
                     continue;
 
                 otherLabels[regionI].insert(pI);
-                normals[regionI] += surface_[triI].normal(points);
+                normals[regionI] += surface_[triI].areaNormal(points);
             }
         }
 
@@ -389,7 +389,7 @@ void Foam::Module::triSurfaceCurvatureEstimator::calculateSurfaceCurvatures()
 
         forAllIters(normals, nit)
         {
-            nit() /= (Foam::mag(nit()) + VSMALL);
+            nit().normalise();
         }
 
         forAllConstIters(otherLabels, it)

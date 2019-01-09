@@ -479,8 +479,7 @@ void Foam::Module::tetMeshOptimisation::optimiseBoundaryVolumeOptimizer
                                 points[nodeI]
                             );
 
-                            vector n = tri.normal();
-                            n /= (mag(n) + VSMALL);
+                            vector n = tri.unitNormal();
 
                             nt += symm(n*n);
                         }

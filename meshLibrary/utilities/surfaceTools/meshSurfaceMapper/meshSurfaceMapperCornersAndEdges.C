@@ -141,7 +141,7 @@ Foam::scalar Foam::Module::meshSurfaceMapper::faceMetricInPatch
     const pointFieldPMG& points = surfaceEngine_.points();
 
     const point centre = bf.centre(points);
-    const vector area = bf.normal(points);
+    const vector area = bf.areaNormal(points);
 
     point projCentre;
     scalar dSq;
@@ -178,7 +178,7 @@ Foam::scalar Foam::Module::meshSurfaceMapper::faceMetricInPatch
                 projPoints[pI],
                 projPoints[bf.fcIndex(pI)],
                 projCentre
-            ).normal();
+            ).areaNormal();
     }
 
     return magSqr(centre - projCentre) + mag(mag(projArea) - mag(area));

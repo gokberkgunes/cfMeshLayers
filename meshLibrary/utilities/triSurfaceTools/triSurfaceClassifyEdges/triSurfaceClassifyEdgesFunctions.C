@@ -179,7 +179,7 @@ void Foam::Module::triSurfaceClassifyEdges::checkOrientation()
         {
             const labelledTri& tri = surf[triI];
             const point c = tri.centre(points);
-            vector n = tri.normal(points);
+            vector n = tri.areaNormal(points);
             const scalar magN = mag(n);
 
             if (magN < VSMALL)

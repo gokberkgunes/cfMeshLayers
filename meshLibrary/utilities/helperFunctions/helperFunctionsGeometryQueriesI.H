@@ -272,13 +272,12 @@ inline Foam::faceList Foam::Module::help::mergePatchFaces
 
         for (label nI = 0; nI<(patchFaces.size()-1); nI++)
         {
-            vector n0 = patchFaces[nI].normal(polyPoints);
-            n0 /= mag(n0);
+            const vector n0 = patchFaces[nI].unitNormal(polyPoints);
 
             for (label nJ = nI + 1; nJ < patchFaces.size(); nJ++)
             {
-                vector n1 = patchFaces[nI].normal(polyPoints);
-                n1 /= mag(n1);
+                const vector n1 = patchFaces[nI].unitNormal(polyPoints);
+
                 if
                 (
                     help::shareAnEdge(patchFaces[nI], patchFaces[nJ])
@@ -686,8 +685,7 @@ inline bool Foam::Module::help::findMinimizerPoint
     forAll(origins, i)
     {
         //- use the normalized vector
-        vector n = normals[i];
-        n /= (mag(n) + VSMALL);
+        vector n = normalised(normals[i]);
 
         const tensor t = n*n;
 
@@ -1051,7 +1049,7 @@ inline bool Foam::Module::help::doTrianglesOverlap
         return false;
     }
 
-    vector n0 = tri0.normal();
+    vector n0 = tri0.areaNormal();
     const scalar dn0 = mag(n0);
     n0 /= (dn0 + VSMALL);
 
@@ -1060,7 +1058,7 @@ inline bool Foam::Module::help::doTrianglesOverlap
         return false;
     }
 
-    vector n1 = tri1.normal();
+    vector n1 = tri1.areaNormal();
     const scalar dn1 = mag(n1);
     n1 /= (dn1 + VSMALL);
 
@@ -1328,13 +1326,8 @@ inline bool Foam::Module::help::doTrianglesIntersect
         return false;
     }
 
-    vector n0 = tri0.normal();
-    const scalar dn0 = mag(n0);
-    n0 /= (dn0 + VSMALL);
-
-    vector n1 = tri1.normal();
-    const scalar dn1 = mag(n1);
-    n1 /= (dn1 + VSMALL);
+    const vector n0 = tri0.unitNormal();
+    const vector n1 = tri1.unitNormal();
 
     //- distance of the points of the first triangle from the plane
     //- of the second triangle
@@ -1677,7 +1670,7 @@ inline bool Foam::Module::help::isFaceConvexAndOk
 {
     bool valid(true);
 
-    vector normal = f.normal(fp);
+    vector normal = f.areaNormal(fp);
     const scalar magN = mag(normal);
 
     //- face has zero area. All points are inverted

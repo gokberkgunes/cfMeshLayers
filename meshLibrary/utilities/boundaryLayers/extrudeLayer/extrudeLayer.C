@@ -850,7 +850,7 @@ void Foam::Module::extrudeLayer::movePoints()
                     {
                         const face& f = faces[faceI];
 
-                        lps.coordinates() -= f.normal(points);
+                        lps.coordinates() -= f.areaNormal(points);
 
                         if (thickness_ < 0.0)
                         {
@@ -943,7 +943,7 @@ void Foam::Module::extrudeLayer::movePoints()
                 {
                     const face& f = faces[faceI];
 
-                    normal -= f.normal(points);
+                    normal -= f.areaNormal(points);
 
                     if (thickness_ < 0.0)
                     {
@@ -969,11 +969,7 @@ void Foam::Module::extrudeLayer::movePoints()
                 thickness *= 0.4;
             }
 
-            const scalar d = mag(normal);
-            if (d > VSMALL)
-            {
-                normal /= d;
-            }
+            normal.normalise();
 
             displacements[pI] = normal*thickness;
         }

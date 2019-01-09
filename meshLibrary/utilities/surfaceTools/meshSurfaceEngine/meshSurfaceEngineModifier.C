@@ -96,7 +96,7 @@ void Foam::Module::meshSurfaceEngineModifier::moveBoundaryVertex
         {
             const label bfI = pFaces(bpI, pfI);
 
-            faceNormals[bfI] = bFaces[bfI].normal(points);
+            faceNormals[bfI] = bFaces[bfI].areaNormal(points);
         }
     }
 
@@ -271,7 +271,7 @@ void Foam::Module::meshSurfaceEngineModifier::updateGeometry
         forAll(updateFaces, bfI)
         {
             if (updateFaces[bfI])
-                faceNormals[bfI] = bFaces[bfI].normal(points);
+                faceNormals[bfI] = bFaces[bfI].areaNormal(points);
         }
     }
 

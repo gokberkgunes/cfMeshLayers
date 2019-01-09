@@ -101,7 +101,7 @@ inline Foam::vector Foam::Module::partTet::Sa(const PointField& points) const
         points[data_[3]]
     );
 
-    return tria.normal();
+    return tria.areaNormal();
     //return triangle<point, point>(b_, c_, d_).normal();
 }
 
@@ -116,7 +116,7 @@ inline Foam::vector Foam::Module::partTet::Sb(const PointField& points) const
         points[data_[2]]
     );
 
-    return tria.normal();
+    return tria.areaNormal();
     //return triangle<point, point>(a_, d_, c_).normal();
 }
 
@@ -131,7 +131,7 @@ inline Foam::vector Foam::Module::partTet::Sc(const PointField& points) const
         points[data_[3]]
     );
 
-    return tria.normal();
+    return tria.areaNormal();
     //return triangle<point, point>(a_, b_, d_).normal();
 }
 
@@ -146,7 +146,7 @@ inline Foam::vector Foam::Module::partTet::Sd(const PointField& points) const
         points[data_[1]]
     );
 
-    return tria.normal();
+    return tria.areaNormal();
     //return triangle<point, point>(a_, c_, b_).normal();
 }
 
