@@ -3,4 +3,5 @@ EXE_INC = \
     -I$(LIB_SRC)/parallel/decompose/decompositionMethods/lnInclude
 
 EXE_LIBS = \
-    -ldecompose
+    -ldecompose \
+    -ldecompositionMethods

@@ -6,6 +6,7 @@ EXE_INC = \
     -I../../meshLibrary/lnInclude
 
 EXE_LIBS = \
-    -lfiniteVolume -lmeshTools \
+    -lfiniteVolume \
+    -lmeshTools \
     -L$(FOAM_LIBBIN) \
     -lmeshLibrary
