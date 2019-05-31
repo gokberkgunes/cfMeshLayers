@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
     }
 
     scalar tol(45.0);
-    if (!args.optionReadIfPresent("angle", tol))
+    if (!args.readIfPresent("angle", tol))
     {
         Info<< "Using 45 deg as default angle!" << endl;
     }

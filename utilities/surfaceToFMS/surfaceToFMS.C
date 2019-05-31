@@ -52,7 +52,8 @@ int main(int argc, char *argv[])
     const fileName inFileName(args[1]);
     if (inFileName.ext() == "fms")
     {
-        FatalError << "trying to convert a fms file to itself"
+        FatalErrorInFunction
+            << "trying to convert a fms file to itself" << nl
             << exit(FatalError);
     }
 

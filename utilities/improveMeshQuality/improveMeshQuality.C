@@ -64,31 +64,31 @@ int main(int argc, char *argv[])
 
     // Read the settings
 
-    if (!args.optionReadIfPresent("nLoops", nLoops))
+    if (!args.readIfPresent("nLoops", nLoops))
     {
         Info<< "Default number of loops is "
             << nLoops << endl;
     }
 
-    if (!args.optionReadIfPresent("nIterations", nIterations))
+    if (!args.readIfPresent("nIterations", nIterations))
     {
         Info<< "Default number of iterations is "
             << nIterations << endl;
     }
 
-    if (!args.optionReadIfPresent("nSurfaceIterations", nSurfaceIterations))
+    if (!args.readIfPresent("nSurfaceIterations", nSurfaceIterations))
     {
         Info<< "Default number of surface iterations is "
             << nSurfaceIterations << endl;
     }
 
-    if (!args.optionReadIfPresent("qualityThreshold", qualityThreshold))
+    if (!args.readIfPresent("qualityThreshold", qualityThreshold))
     {
         Info<< "Using default quality threshold 0.1" << endl;
     }
 
     word constrainedCellSet;
-    if (!args.optionReadIfPresent("constrainedCellSet", constrainedCellSet))
+    if (!args.readIfPresent("constrainedCellSet", constrainedCellSet))
     {
         Info<< "No constraints applied on the smoothing procedure" << endl;
     }

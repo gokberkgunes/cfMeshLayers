@@ -136,7 +136,7 @@ int main(int argc, char *argv[])
     polyMeshGen pmg(runTime);
     pmg.read();
 
-    const bool is2DLayer = args.optionFound("2DLayers");
+    const bool is2DLayer = args.found("2DLayers");
 
     // generate the initial boundary layer
     generateLayer(pmg, meshDict, is2DLayer);

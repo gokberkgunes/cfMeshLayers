@@ -69,7 +69,8 @@ void getPatchIds
     if (nFound != patchNames.size())
     {
         WarningInFunction
-            << "Not all supplied patch names were found on the surface mesh" << endl;
+            << "Not all supplied patch names were found on the surface mesh"
+            << endl;
     }
 }
 
@@ -321,12 +322,9 @@ int main(int argc, char *argv[])
 
     fileName outFileName(inFileName);
 
-    if (args.optionFound("output"))
-    {
-        outFileName = args["output"];
-    }
+    args.readIfPresent("output", outFileName);
 
-    const bool keepPatches = args.optionFound("keep");
+    const bool keepPatches = args.found("keep");
 
     // Read original surface
     triSurf origSurf(inFileName);
@@ -334,16 +332,16 @@ int main(int argc, char *argv[])
     // Get patch ids
     DynamicList<label> patchIds;
 
-    if (args.options().found("patchNames"))
+    if (args.found("patchNames"))
     {
-        if (args.optionFound("patchIds"))
+        if (args.found("patchIds"))
         {
-            FatalError() << "Cannot specify both patch names and ids"
+            FatalErrorInFunction
+                << "Cannot specify both patch names and ids" << nl
                 << Foam::abort(FatalError);
         }
 
-        IStringStream is(args["patchNames"]);
-        wordList patchNames(is);
+        wordList patchNames(args.getList<word>("patchNames"));
 
         getPatchIds
         (
@@ -352,20 +350,15 @@ int main(int argc, char *argv[])
             patchIds
         );
     }
-
-    if (args.optionFound("patchIds"))
+    else if (args.found("patchIds"))
     {
-        IStringStream is(args["patchIds"]);
-
-        patchIds.append(labelList(is));
+        patchIds.append(args.getList<label>("patchIds"));
     }
 
-    if (args.optionFound("patchIdRange"))
+    labelPair idRange;
+    if (args.readIfPresent("patchIdRange", idRange))
     {
-        IStringStream is(args["patchIdRange"]);
-        Pair<label> idRange(is);
-
-        for (label id = idRange.first(); id <= idRange.second(); id++)
+        for (label id = idRange.first(); id <= idRange.second(); ++id)
         {
             patchIds.append(id);
         }
@@ -373,7 +366,8 @@ int main(int argc, char *argv[])
 
     if (!patchIds.size())
     {
-        FatalError() << "No patches specified"
+        FatalErrorInFunction
+            << "No patches specified" << nl
             << Foam::abort(FatalError);
     }
 
@@ -389,11 +383,11 @@ int main(int argc, char *argv[])
     // Write new surface mesh
     newSurf->writeSurface(outFileName);
 
-    Info<< "Original surface patches: " << origSurf.patches().size() << endl;
-    Info<< "Final surface patches: " << newSurf->patches().size() << endl;
-    Info<< "Surface written to " << outFileName <<  endl;
+    Info<< "Original surface patches: " << origSurf.patches().size() << nl
+        << "Final surface patches: " << newSurf->patches().size() << nl
+        << "Surface written to " << outFileName <<  endl;
 
-    Info<< "End\n" << endl;
+    Info<< "\nEnd\n" << endl;
 
     return 0;
 }
