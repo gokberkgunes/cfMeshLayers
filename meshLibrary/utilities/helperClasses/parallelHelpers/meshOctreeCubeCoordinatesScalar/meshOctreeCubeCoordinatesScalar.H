@@ -185,10 +185,11 @@ public:
 
 //- Data for meshOctreCubeCoordinatesScalar are contiguous
 template<>
-inline bool contiguous<Module::meshOctreeCubeCoordinatesScalar>()
-{
-    return true;
-}
+struct is_contiguous<Module::meshOctreeCubeCoordinatesScalar>
+:
+    std::true_type
+{};
+
 
 } // End namespace Foam
 

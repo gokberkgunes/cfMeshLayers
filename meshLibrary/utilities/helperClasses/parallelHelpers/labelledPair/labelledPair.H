@@ -226,10 +226,11 @@ public:
 
 //- Data for labelledPair are contiguous
 template<>
-inline bool contiguous<Module::labelledPair>()
-{
-    return true;
-}
+struct is_contiguous<Module::labelledPair>
+:
+    std::true_type
+{};
+
 
 } // End namespace Foam
 

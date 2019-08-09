@@ -150,10 +150,10 @@ public:
 
 //- Data for parTriFace are contiguous
 template<>
-inline bool contiguous<Module::parTriFace>()
-{
-    return true;
-}
+struct is_contiguous<Module::parTriFace>
+:
+    std::true_type
+{};
 
 
 } // End namespace Foam

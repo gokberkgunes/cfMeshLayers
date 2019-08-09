@@ -197,10 +197,11 @@ public:
 
 //- Data for labelledScalar are contiguous
 template<>
-inline bool contiguous<Module::labelledScalar>()
-{
-    return true;
-}
+struct is_contiguous<Module::labelledScalar>
+:
+    std::true_type
+{};
+
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

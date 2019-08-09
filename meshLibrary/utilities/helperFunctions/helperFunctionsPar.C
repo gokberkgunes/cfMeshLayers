@@ -143,7 +143,7 @@ void Foam::Module::help::exchangeMap
 {
     data.clear();
 
-    if (!contiguous<T>())
+    if (!is_contiguous<T>::value)
     {
         FatalError << "Data is not contiguous" << exit(FatalError);
     }
@@ -363,9 +363,9 @@ void Foam::Module::help::exchangeMap
 {
     mOut.clear();
 
-    if (!contiguous<T>())
+    if (!is_contiguous<T>::value)
     {
-        FatalError << "Data is not contigous" << exit(FatalError);
+        FatalError << "Data is not contiguous" << exit(FatalError);
     }
 
     typename std::map<label, ListType>::const_iterator iter;

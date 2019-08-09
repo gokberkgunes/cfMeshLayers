@@ -188,10 +188,11 @@ public:
 
 //- Data for labelledPointScalar are contiguous
 template<>
-inline bool contiguous<Module::labelledPointScalar>()
-{
-    return true;
-}
+struct is_contiguous<Module::labelledPointScalar>
+:
+    std::true_type
+{};
+
 
 } // End namespace Foam
 
