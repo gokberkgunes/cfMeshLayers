@@ -135,10 +135,11 @@ public:
 
 //- Data for parPartTet are contiguous
 template<>
-inline bool contiguous<Module::parPartTet>()
-{
-    return true;
-}
+struct is_contiguous<Module::parPartTet>
+:
+    std::true_type
+{};
+
 
 } // End namespace Foam
 

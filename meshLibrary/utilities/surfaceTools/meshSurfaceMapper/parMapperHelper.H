@@ -177,12 +177,13 @@ public:
 
 } // End namespace Module
 
+
 //- Data for parMapperHelper are contiguous
 template<>
-inline bool contiguous<Module::parMapperHelper>()
-{
-    return true;
-}
+struct is_contiguous<Module::parMapperHelper>
+:
+    std::true_type
+{};
 
 
 } // End namespace Foam

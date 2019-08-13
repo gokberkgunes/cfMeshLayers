@@ -218,7 +218,7 @@ inline Foam::label Foam::Module::LongList<T, Offset>::size() const
 template<class T, int Offset>
 inline Foam::label Foam::Module::LongList<T, Offset>::byteSize() const
 {
-    if (!contiguous<T>())
+    if (!is_contiguous<T>::value)
     {
         FatalErrorInFunction
             << "Cannot return the binary size of a list of "

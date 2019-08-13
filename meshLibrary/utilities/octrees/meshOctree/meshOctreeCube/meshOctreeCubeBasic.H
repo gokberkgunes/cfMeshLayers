@@ -149,10 +149,11 @@ public:
 
 //- Data for meshOctreeCubeBasic are contiguous
 template<>
-inline bool contiguous<Module::meshOctreeCubeBasic>()
-{
-    return true;
-}
+struct is_contiguous<Module::meshOctreeCubeBasic>
+:
+    std::true_type
+{};
+
 
 } // End namespace Foam
 

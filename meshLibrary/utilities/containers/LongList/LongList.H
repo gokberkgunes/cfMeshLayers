@@ -148,7 +148,7 @@ public:
 
             //- Return the binary size in number of characters of the UList
             //  if the element is a primitive type
-            //  i.e. contiguous<T>() == true
+            //  i.e. is_contiguous<T>::value == true
             inline label byteSize() const;
 
 
