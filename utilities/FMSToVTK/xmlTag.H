@@ -190,7 +190,7 @@ Ostream& operator<<(Ostream& os, const xmlTag& tag)
     // Attributes and text
     forAllConstIters(tag.attributes_, iter)
     {
-        os << token::SPACE << iter.key() << '=' << iter.object();
+        os << token::SPACE << iter.key() << '=' << iter.val();
     }
 
     if (tag.str().size() || tag.children_.size())
