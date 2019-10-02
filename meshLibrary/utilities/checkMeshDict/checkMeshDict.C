@@ -249,7 +249,7 @@ void Foam::Module::checkMeshDict::checkObjectRefinements() const
             forAll(refObjects, objectI)
             {
                 const entry& objectEntry =
-                    dict.lookupEntry(objectNames[objectI], false, false);
+                    dict.lookupEntry(objectNames[objectI], keyType::LITERAL);
 
                 refObjects.set
                 (
@@ -312,7 +312,7 @@ void Foam::Module::checkMeshDict::checkAnisotropicSources() const
             forAll(anisotropicObjects, objectI)
             {
                 const entry& objectEntry =
-                    dict.lookupEntry(objectNames[objectI], false, false);
+                    dict.lookupEntry(objectNames[objectI], keyType::LITERAL);
 
                 anisotropicObjects.set
                 (
