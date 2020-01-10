@@ -144,20 +144,6 @@ Foam::Istream& Foam::Module::processorBoundaryPatch::operator>>(Istream& is)
 }
 
 
-void Foam::Module::processorBoundaryPatch::operator=
-(
-    const processorBoundaryPatch& wp
-)
-{
-    name_ = wp.name_;
-    type_ = wp.type_;
-    nFaces_ = wp.nFaces_;
-    startFace_ = wp.startFace_;
-    myProcNo_ = wp.myProcNo_;
-    neighbProcNo_ = wp.neighbProcNo_;
-}
-
-
 bool Foam::Module::processorBoundaryPatch::operator!=
 (
     const processorBoundaryPatch& wp

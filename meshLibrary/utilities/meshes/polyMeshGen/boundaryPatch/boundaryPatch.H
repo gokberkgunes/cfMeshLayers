@@ -119,13 +119,11 @@ public:
         void writeDict(Ostream&) const;
 
 
-    // Member operators
+    // Member Operators
 
         Ostream& operator<<(Ostream&) const;
 
         Istream& operator>>(Istream&);
-
-        void operator=(const boundaryPatch&);
 
         bool operator!=(const boundaryPatch&) const;
 };

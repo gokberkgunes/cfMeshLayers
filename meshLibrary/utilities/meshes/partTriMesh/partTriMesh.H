@@ -105,7 +105,7 @@ class partTriMesh
         mutable labelLongList* pAtBufferLayersPtr_;
 
 
-    // Private member functions
+    // Private Member Functions
 
         //- create surface triangulation
         void createPointsAndTrias(const List<direction>&);
@@ -123,11 +123,12 @@ class partTriMesh
         //- update buffer layer points
         void updateBufferLayers();
 
-        //- disallow bitwise assignment
-        void operator=(const partTriMesh&);
 
-        //- disallow bitwise copy construct
-        partTriMesh(const partTriMesh&);
+        //- No copy construct
+        partTriMesh(const partTriMesh&) = delete;
+
+        //- No copy assignment
+        void operator=(const partTriMesh&) = delete;
 
 
 public:

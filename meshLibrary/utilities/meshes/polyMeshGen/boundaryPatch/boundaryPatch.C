@@ -129,15 +129,6 @@ Foam::Istream& Foam::Module::boundaryPatch::operator>>
 }
 
 
-void Foam::Module::boundaryPatch::operator=(const boundaryPatch& wp)
-{
-    name_ = wp.name_;
-    type_ = wp.type_;
-    nFaces_ = wp.nFaces_;
-    startFace_ = wp.startFace_;
-}
-
-
 bool Foam::Module::boundaryPatch::operator!=(const boundaryPatch& wp) const
 {
     if (name_ != wp.name_)

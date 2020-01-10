@@ -6,6 +6,7 @@
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
     Copyright (C) 2014-2017 Creative Fields, Ltd.
+    Copyright (C) 2020 OpenCFD Ltd.
 -------------------------------------------------------------------------------
 Author
      Franjo Juretic (franjo.juretic@c-fields.com)
@@ -49,6 +50,7 @@ namespace Foam
 {
 namespace Module
 {
+// Forward Declarations
 class meshOctreeCubeBasic;
 inline Ostream& operator<<(Ostream&, const meshOctreeCubeBasic&);
 inline Istream& operator>>(Istream&, meshOctreeCubeBasic&);
@@ -61,7 +63,7 @@ class meshOctreeCubeBasic
 :
     public meshOctreeCubeCoordinates
 {
-    // Private data
+    // Private Data
 
         //- cube type
         direction cubeType_;
@@ -74,7 +76,7 @@ public:
 
     // Constructors
 
-        //- Null constructor
+        //- Default construct
         inline meshOctreeCubeBasic();
 
         //- Construct from coordinates
@@ -109,7 +111,7 @@ public:
         };
 
 
-    // Member functions
+    // Member Functions
 
         //- return type
         inline direction cubeType() const;
@@ -127,12 +129,7 @@ public:
         inline const meshOctreeCubeCoordinates& coordinates() const;
 
 
-    // Member operators
-
-        inline void operator=(const meshOctreeCubeBasic&);
-
-
-    // Friend operators
+    // IOstream Operators
 
         inline friend Ostream& operator<<
         (

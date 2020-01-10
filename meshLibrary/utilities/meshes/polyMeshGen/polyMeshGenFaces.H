@@ -61,7 +61,7 @@ class polyMeshGenFaces
 {
 protected:
 
-    // Protected data
+    // Protected Data
 
         //- list of faces
         faceListPMG faces_;
@@ -86,7 +86,7 @@ protected:
         mutable labelIOList* neighbourPtr_;
 
 
-    // Private member functions
+    // Private Member Functions
 
         //- calculate owner and neighbour addressing
         virtual void calculateOwnersAndNeighbours() const = 0;
@@ -95,11 +95,11 @@ protected:
         void clearOut() const;
 
 
-    // Disallow bitwise assignment
+        //- No copy construct
+        polyMeshGenFaces(const polyMeshGenFaces&) = delete;
 
-        void operator=(const polyMeshGenFaces&);
-
-        polyMeshGenFaces(const polyMeshGenFaces&);
+        //- No copy assignment
+        void operator=(const polyMeshGenFaces&) = delete;
 
 
 public:
@@ -131,7 +131,7 @@ public:
         );
 
 
-    //- Destructor
+    //- Destructor, calls clearOut()
     virtual ~polyMeshGenFaces();
 
 

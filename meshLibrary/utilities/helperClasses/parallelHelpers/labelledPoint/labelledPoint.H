@@ -6,6 +6,7 @@
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
     Copyright (C) 2014-2017 Creative Fields, Ltd.
+    Copyright (C) 2020 OpenCFD Ltd.
 -------------------------------------------------------------------------------
 Author
      Franjo Juretic (franjo.juretic@c-fields.com)
@@ -57,12 +58,12 @@ namespace Module
 
 class labelledPoint
 {
-    // Private data
+    // Private Data
 
-        //- point label
+        //- Point label
         label pLabel_;
 
-        //- point coordinates
+        //- Point coordinates
         point coords_;
 
 
@@ -70,7 +71,7 @@ public:
 
     // Constructors
 
-        //- Null construct
+        //- Default construct, as invalid
         labelledPoint()
         :
             pLabel_(-1),
@@ -86,11 +87,7 @@ public:
         {}
 
 
-    //- Destructor
-    ~labelledPoint() = default;
-
-
-    // Member functions
+    // Member Functions
 
         //- return point label
         inline label pointLabel() const
@@ -115,26 +112,20 @@ public:
         }
 
 
-    // Member operators
+    // Member Operators
 
-        inline void operator=(const labelledPoint& lp)
+        inline bool operator==(const labelledPoint& rhs) const
         {
-            pLabel_ = lp.pLabel_;
-            coords_ = lp.coords_;
+            return (pLabel_ == rhs.pLabel_);
         }
 
-        inline bool operator==(const labelledPoint& lp) const
+        inline bool operator!=(const labelledPoint& rhs) const
         {
-            return (pLabel_ == lp.pLabel_);
-        }
-
-        inline bool operator!=(const labelledPoint& lp) const
-        {
-            return !this->operator==(lp);
+            return !(*this == rhs);
         }
 
 
-    // Friend operators
+    // IOstream Operators
 
         friend Ostream& operator<<(Ostream& os, const labelledPoint& lp)
         {

@@ -57,7 +57,7 @@ namespace Module
 
 class polyMeshGen2DEngine
 {
-    // Private data
+    // Private Data
 
         //- const reference to the mesh
         const polyMeshGen& mesh_;
@@ -90,7 +90,7 @@ class polyMeshGen2DEngine
         mutable labelList* zMaxToZMinPtr_;
 
 
-    // Private member functions
+    // Private Member Functions
 
         //- find active faces
         void findActiveFaces() const;
@@ -116,11 +116,12 @@ class polyMeshGen2DEngine
         //- find offset point to each zMin point
         void findZMaxOffsetPoints() const;
 
-        //- disallow bitwise assignment
-        void operator=(const polyMeshGen2DEngine&);
 
-        //- disallow copy construct
-        polyMeshGen2DEngine(const polyMeshGen2DEngine&);
+        //- No copy construct
+        polyMeshGen2DEngine(const polyMeshGen2DEngine&) = delete;
+
+        //- No copy assignment
+        void operator=(const polyMeshGen2DEngine&) = delete;
 
 
 public:

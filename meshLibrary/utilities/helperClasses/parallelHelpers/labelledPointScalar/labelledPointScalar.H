@@ -6,6 +6,7 @@
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
     Copyright (C) 2014-2017 Creative Fields, Ltd.
+    Copyright (C) 2020 OpenCFD Ltd.
 -------------------------------------------------------------------------------
 Author
      Franjo Juretic (franjo.juretic@c-fields.com)
@@ -57,15 +58,15 @@ namespace Module
 
 class labelledPointScalar
 {
-    // Private data
+    // Private Data
 
-        //- point label
+        //- Point label
         label pLabel_;
 
-        //- point coordinates
+        //- Point coordinates
         point coords_;
 
-        //- scalar data
+        //- Scalar data
         scalar weight_;
 
 
@@ -73,7 +74,7 @@ public:
 
     // Constructors
 
-        //- Null construct
+        //- Default construct, as invalid
         labelledPointScalar()
         :
             pLabel_(-1),
@@ -90,13 +91,9 @@ public:
         {}
 
 
-    //- Destructor
-    ~labelledPointScalar() = default;
+    // Member Functions
 
-
-    // Member functions
-
-        //- return point label
+        //- Return point label
         inline label pointLabel() const
         {
             return pLabel_;
@@ -107,7 +104,7 @@ public:
             return pLabel_;
         }
 
-        //- return point coordinates
+        //- Return point coordinates
         inline const point& coordinates() const
         {
             return coords_;
@@ -118,7 +115,7 @@ public:
             return coords_;
         }
 
-        //- return scalar value
+        //- Return scalar value
         inline scalar scalarValue() const
         {
             return weight_;
@@ -130,32 +127,20 @@ public:
         }
 
 
-    // Member operators
+    // Member Operators
 
-        inline void operator=(const labelledPointScalar& lps)
+        inline bool operator==(const labelledPointScalar& rhs) const
         {
-            pLabel_ = lps.pLabel_;
-            coords_ = lps.coords_;
-            weight_ = lps.weight_;
+            return (pLabel_ == rhs.pLabel_);
         }
 
-        inline bool operator==(const labelledPointScalar& lps) const
+        inline bool operator!=(const labelledPointScalar& rhs) const
         {
-            if (pLabel_ == lps.pLabel_)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        inline bool operator!=(const labelledPointScalar& lps) const
-        {
-            return !this->operator==(lps);
+            return !(*this == rhs);
         }
 
 
-    // Friend operators
+    // IOstream Operators
 
         friend Ostream& operator<<(Ostream& os, const labelledPointScalar& lps)
         {

@@ -6,6 +6,7 @@
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
     Copyright (C) 2014-2017 Creative Fields, Ltd.
+    Copyright (C) 2020 OpenCFD Ltd.
 -------------------------------------------------------------------------------
 Author
      Franjo Juretic (franjo.juretic@c-fields.com)
@@ -56,12 +57,12 @@ namespace Module
 
 class labelledPair
 {
-    // Private data
+    // Private Data
 
-        //- label
+        //- Label
         label pLabel_;
 
-        //- pair data
+        //- Pair data
         labelPair pair_;
 
 
@@ -69,7 +70,7 @@ public:
 
     // Constructors
 
-        //- Null construct
+        //- Default construct
         labelledPair()
         :
             pLabel_(-1),
@@ -88,32 +89,22 @@ public:
         {}
 
 
-    //- Destructor
-    ~labelledPair() = default;
+    // Member Functions
 
-
-    // Member functions
-
-        //- return pair label
+        //- The label for the pair
         inline label pairLabel() const
         {
             return pLabel_;
         }
 
-        //- return the pair
+        //- The pair
         inline const labelPair& pair() const
         {
             return pair_;
         }
 
 
-    // Member operators
-
-        inline void operator=(const labelledPair& lpp)
-        {
-            pLabel_ = lpp.pLabel_;
-            pair_ = lpp.pair_;
-        }
+    // Member Operators
 
         inline bool operator==
         (
@@ -147,12 +138,9 @@ public:
             return false;
         }
 
-        inline bool operator!=
-        (
-            const labelledPair& lcc
-        ) const
+        inline bool operator!=(const labelledPair& rhs) const
         {
-            return !this->operator==(lcc);
+            return !(*this == rhs);
         }
 
         inline bool operator<(const labelledPair& lpp) const
@@ -188,7 +176,7 @@ public:
         }
 
 
-    // Friend operators
+    // Friend Operators
 
         friend Ostream& operator<<
         (

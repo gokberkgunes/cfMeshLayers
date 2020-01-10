@@ -74,8 +74,10 @@ Foam::label
 Foam::Module::patchRefinement::patchInSurface(const triSurf& ts) const
 {
     forAll(ts.patches(), patchI)
+    {
         if (ts.patches()[patchI].name() == patchName_)
             return patchI;
+    }
 
     FatalErrorInFunction
         << "Patch " << patchName_
@@ -87,13 +89,6 @@ Foam::Module::patchRefinement::patchInSurface(const triSurf& ts) const
 
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
-void Foam::Module::patchRefinement::operator=(const patchRefinement& pr)
-{
-    patchName_ = pr.patchName_;
-    cellSize_ = pr.cellSize_;
-}
-
 
 Foam::Istream& Foam::Module::operator>>
 (
@@ -113,7 +108,7 @@ Foam::Ostream& Foam::Module::operator<<
     const Foam::Module::patchRefinement& pr
 )
 {
-    os << pr.patchName_ << " " << pr.cellSize_ << nl;
+    os << pr.patchName_ << token::SPACE << pr.cellSize_ << nl;
     return os;
 }
 

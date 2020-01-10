@@ -78,19 +78,17 @@ class surfaceMeshGeometryModification
         bool modificationActive_;
 
 
-    // Private member functions
+    // Private Member Functions
 
         //- check existence of geometry modifiers
         void checkModification();
 
-        //- disallow bitwise copy construct
+        //- No copy construct
         surfaceMeshGeometryModification
-        (
-            const surfaceMeshGeometryModification&
-        );
+            (const surfaceMeshGeometryModification&) = delete;
 
-        //- disallow bitwise assignment
-        void operator=(const surfaceMeshGeometryModification&);
+        //- No copy assignment
+        void operator=(const surfaceMeshGeometryModification&) = delete;
 
 
 public:

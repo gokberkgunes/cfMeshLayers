@@ -62,7 +62,7 @@ namespace Module
 
 class edgeMeshGeometryModification
 {
-    // Private data
+    // Private Data
 
         //- reference to edgeMesh
         const edgeMesh& edgeMesh_;
@@ -77,16 +77,17 @@ class edgeMeshGeometryModification
         bool modificationActive_;
 
 
-    // Private member functions
+    // Private Member Functions
 
         //- check existence of geometry modifiers
         void checkModification();
 
-        //- disallow bitwise copy construct
-        edgeMeshGeometryModification(const edgeMeshGeometryModification&);
+        //- No copy construct
+        edgeMeshGeometryModification
+            (const edgeMeshGeometryModification&) = delete;
 
-        //- disallow bitwise assignment
-        void operator=(const edgeMeshGeometryModification&);
+        //- No copy assignment
+        void operator=(const edgeMeshGeometryModification&) = delete;
 
 
 public:

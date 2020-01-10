@@ -6,6 +6,7 @@
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
     Copyright (C) 2014-2017 Creative Fields, Ltd.
+    Copyright (C) 2020 OpenCFD Ltd.
 -------------------------------------------------------------------------------
 Author
      Franjo Juretic (franjo.juretic@c-fields.com)
@@ -56,7 +57,7 @@ class processorBoundaryPatch
 :
     public boundaryPatchBase
 {
-    // private data
+    // Private Data
 
         label myProcNo_;
 
@@ -138,12 +139,7 @@ public:
         //- check if the processor is the owner of the interface
         inline bool owner() const
         {
-            if (myProcNo_ < neighbProcNo_)
-            {
-                return true;
-            }
-
-            return false;
+            return (myProcNo_ < neighbProcNo_);
         }
 
         //- Return as dictionary of entries
@@ -159,13 +155,11 @@ public:
         void writeDict(Ostream&) const;
 
 
-    // Member operators
+    // Member Operators
 
         Ostream& operator<<(Ostream&) const;
 
         Istream& operator>>(Istream&);
-
-        void operator=(const processorBoundaryPatch&);
 
         bool operator!=(const processorBoundaryPatch&) const;
 };

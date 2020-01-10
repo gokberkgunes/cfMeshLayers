@@ -6,6 +6,7 @@
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
     Copyright (C) 2014-2017 Creative Fields, Ltd.
+    Copyright (C) 2020 OpenCFD Ltd.
 -------------------------------------------------------------------------------
 Author
      Franjo Juretic (franjo.juretic@c-fields.com)
@@ -48,12 +49,10 @@ SourceFiles
 
 namespace Foam
 {
-// Forward declarations
-class Istream;
-class Ostream;
-
 namespace Module
 {
+
+// Forward Declarations
 class triSurf;
 class patchRefinement;
 Istream& operator>>(Istream& is, patchRefinement& pr);
@@ -65,7 +64,7 @@ Ostream& operator<<(Ostream& os, const patchRefinement& pr);
 
 class patchRefinement
 {
-    // Private members
+    // Private Data
 
         word patchName_;
 
@@ -74,20 +73,19 @@ class patchRefinement
 
 public:
 
+    // Generated Methods: copy construct, copy assign
+
+
     // Constructors
 
-        //- Null contructor
+        //- Default contruct, cell-size = 0
         patchRefinement();
 
         //- Construct from word and desired cell size
         patchRefinement(const word&, const scalar);
 
-        //- contruct from stream
+        //- Construct from stream
         patchRefinement(Istream&);
-
-
-    //- Destructor
-    ~patchRefinement() = default;
 
 
     // Member Functions
@@ -99,9 +97,7 @@ public:
         label patchInSurface(const triSurf& ts) const;
 
 
-    // Operators
-
-        void operator=(const patchRefinement&);
+    // IOstream Operators
 
         friend Istream& operator>>(Istream& is, patchRefinement& pr);
         friend Ostream& operator<<(Ostream& os, const patchRefinement& pr);

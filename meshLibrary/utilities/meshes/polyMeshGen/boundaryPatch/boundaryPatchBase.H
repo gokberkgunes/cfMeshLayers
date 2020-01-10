@@ -6,6 +6,7 @@
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
     Copyright (C) 2014-2017 Creative Fields, Ltd.
+    Copyright (C) 2020 OpenCFD Ltd.
 -------------------------------------------------------------------------------
 Author
      Franjo Juretic (franjo.juretic@c-fields.com)
@@ -61,7 +62,7 @@ class boundaryPatchBase
 {
 protected:
 
-    // Protected data
+    // Protected Data
 
         word name_;
 
@@ -92,8 +93,7 @@ public:
 
 
     //- Destructor
-    virtual ~boundaryPatchBase()
-    {}
+    virtual ~boundaryPatchBase() = default;
 
 
     //- Declare run-time constructor selection table
@@ -122,6 +122,7 @@ public:
             Istream&
         );
 
+
     //- Construct and return a clone
     autoPtr<boundaryPatchBase> clone() const
     {
@@ -139,7 +140,7 @@ public:
     virtual void writeDict(Ostream&) const = 0;
 
 
-    // Member functions
+    // Member Functions
 
         inline const word& patchName() const
         {
@@ -185,12 +186,10 @@ public:
         virtual dictionary dict() const = 0;
 
 
-    // Member operators
+    // Member Operators
 
         friend Ostream& operator<<(Ostream&, const boundaryPatchBase&);
         virtual Istream& operator>>(Istream&) = 0;
-        //virtual void operator=(const boundaryPatchBase&) = 0;
-        //virtual bool operator!=(const boundaryPatchBase&) const = 0;
 };
 
 
