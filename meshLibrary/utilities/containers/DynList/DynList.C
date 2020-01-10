@@ -2,8 +2,11 @@
   =========                 |
   \\      /  F ield         | cfMesh: A library for mesh generation
    \\    /   O peration     |
-    \\  /    A nd           | Copyright (C) 2014-2017 Creative Fields, Ltd.
-     \\/     M anipulation  | Copyright (C) 2018 OpenCFD Ltd.
+    \\  /    A nd           | www.cfmesh.com
+     \\/     M anipulation  |
+-------------------------------------------------------------------------------
+    Copyright (C) 2014-2017 Creative Fields, Ltd.
+    Copyright (C) 2018 OpenCFD Ltd.
 -------------------------------------------------------------------------------
 Author
      Franjo Juretic (franjo.juretic@c-fields.com)

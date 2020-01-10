@@ -2,9 +2,14 @@
   =========                 |
   \\      /  F ield         | cfMesh: A library for mesh generation
    \\    /   O peration     |
-    \\  /    A nd           | Author: Franjo Juretic (franjo.juretic@c-fields.com)
-     \\/     M anipulation  | Copyright (C) Creative Fields, Ltd.
+    \\  /    A nd           | www.cfmesh.com
+     \\/     M anipulation  |
 -------------------------------------------------------------------------------
+     Copyright (C) 2014-2017 Creative Fields, Ltd.
+-------------------------------------------------------------------------------
+Author
+     Franjo Juretic (franjo.juretic@c-fields.com)
+
 License
     This file is part of OpenFOAM.
 
