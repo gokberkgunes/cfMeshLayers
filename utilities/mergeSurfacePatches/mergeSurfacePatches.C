@@ -261,9 +261,9 @@ autoPtr<triSurf> mergeSurfacePatches
     {
         newPatches[patchCount] = geometricSurfacePatch
         (
-            newPatchType,
             newPatchName,
-            patchCount
+            patchCount,
+            newPatchType
         );
     }
     if (patchAddr[patchAddr.size()-1].size() || keepPatches)
