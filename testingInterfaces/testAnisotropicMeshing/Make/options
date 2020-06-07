@@ -1,3 +1,9 @@
+sinclude $(GENERAL_RULES)/module-path-user
+
+ifeq (,$(strip $(FOAM_MODULE_LIBBIN)))
+    FOAM_MODULE_LIBBIN = $(FOAM_USER_LIBBIN)
+endif
+
 EXE_INC = \
     -I$(LIB_SRC)/fileFormats/lnInclude \
     -I$(LIB_SRC)/surfMesh/lnInclude \
@@ -5,6 +11,5 @@ EXE_INC = \
     -I../../meshLibrary/lnInclude
 
 EXE_LIBS = \
-    -L$(FOAM_USER_LIBBIN) \
-    -lmeshLibrary \
-    -lmeshTools
+    -lmeshTools \
+    -L$(FOAM_MODULE_LIBBIN) -lmeshLibrary

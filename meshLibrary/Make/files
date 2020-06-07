@@ -465,4 +465,4 @@ $(writeAsFPMA)/fpmaMesh.C
 
 $(workflowControls)/workflowControls.C
 
-LIB = $(FOAM_LIBBIN)/libmeshLibrary
+LIB = $(FOAM_MODULE_LIBBIN)/libmeshLibrary
