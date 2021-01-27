@@ -32,12 +32,13 @@ License
 // * * * * * * * * * * * * * Private Member Functions  * * * * * * * * * * * //
 
 template<class T, int SizeMin>
-    inline void Foam::Module::DynList<T, SizeMin>::checkAllocation() const
+inline void Foam::Module::DynList<T, SizeMin>::checkAllocation() const
 {
-    if (UList<T>::size() > capacity_)
+    if (capacity_ < UList<T>::size())
     {
         FatalErrorInFunction
-            << "size is out of scope 0 " << " and " << capacity_
+            << "size " << UList<T>::size()
+            << " is out of range 0 to " << capacity_
             << abort(FatalError);
     }
 }
@@ -177,10 +178,6 @@ inline void Foam::Module::DynList<T, SizeMin>::setCapacity
     const label nElem
 )
 {
-    # ifdef DEBUG
-    checkAllocation();
-    # endif
-
     const label nextFree = UList<T>::size();
 
     if (nElem > SizeMin)
@@ -234,7 +231,7 @@ inline void Foam::Module::DynList<T, SizeMin>::setCapacity
 
     // Update sizing
     capacity_ = UList<T>::size();
-    UList<T>::size(nextFree);
+    UList<T>::setAddressableSize(nextFree);
 }
 
 
@@ -284,7 +281,7 @@ template<class T, int SizeMin>
 inline void Foam::Module::DynList<T, SizeMin>::setSize(const label nElem)
 {
     setCapacity(nElem);
-    UList<T>::size(nElem);
+    UList<T>::setAddressableSize(nElem);
 }
 
 
@@ -327,7 +324,7 @@ inline void Foam::Module::DynList<T, SizeMin>::resize
 template<class T, int SizeMin>
 inline void Foam::Module::DynList<T, SizeMin>::clear()
 {
-    UList<T>::size(0);
+    UList<T>::setAddressableSize(0);
 }
 
 
@@ -335,7 +332,7 @@ template<class T, int SizeMin>
 inline void Foam::Module::DynList<T, SizeMin>::clearStorage()
 {
     heapList_.clear();
-    UList<T>::size(0);
+    UList<T>::setAddressableSize(0);
     setCapacity(0);  // Also updates UList reference to point to shortList_
 }
 
@@ -346,7 +343,7 @@ inline Foam::label Foam::Module::DynList<T, SizeMin>::expandStorage()
     const label nextFree = UList<T>::size();
 
     // Allow addressing into the entire list
-    UList<T>::size(capacity_);
+    UList<T>::setAddressableSize(capacity_);
 
     return nextFree;
 }
@@ -377,7 +374,7 @@ inline void Foam::Module::DynList<T, SizeMin>::append(const T& val)
         setCapacity(newSize);
     }
 
-    UList<T>::size(idx + 1);
+    UList<T>::setAddressableSize(idx + 1);
 
     # ifdef DEBUG
     checkAllocation();
@@ -414,7 +411,7 @@ inline T Foam::Module::DynList<T, SizeMin>::remove()
 
     const T& val = UList<T>::operator[](idx);
 
-    UList<T>::size(idx);
+    UList<T>::setAddressableSize(idx);
 
     return val;
 }
@@ -492,7 +489,7 @@ inline void Foam::Module::DynList<T, SizeMin>::operator=
 
     const label nElem = list.size();
     setCapacity(nElem);
-    UList<T>::size(nElem);
+    UList<T>::setAddressableSize(nElem);
 
     # ifdef DEBUG
     checkAllocation();
@@ -518,7 +515,7 @@ inline void Foam::Module::DynList<T, SizeMin>::operator=
 //
 //     const label nElem = list.size();
 //     setCapacity(nElem);
-//     UList<T>::size(nElem);
+//     UList<T>::setAddressableSize(nElem);
 //
 //     # ifdef DEBUG
 //     checkAllocation();
