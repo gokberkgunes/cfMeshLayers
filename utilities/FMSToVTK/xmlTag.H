@@ -53,7 +53,7 @@ class xmlTag
 :
     public OStringStream
 {
-    // Private data
+    // Private Data
 
         //- Tag name
         word name_;
@@ -69,7 +69,7 @@ public:
 
     // Constructors
 
-        //- Null constructor
+        //- Default construct
         xmlTag()
         :
             OStringStream(),
@@ -80,7 +80,7 @@ public:
 
 
         //- Construct given tag name
-        xmlTag(const word& name)
+        explicit xmlTag(const word& name)
         :
             OStringStream(),
             name_(name),
@@ -89,10 +89,10 @@ public:
         {}
 
 
-        //- Construct as copy
+        //- Copy construct
         xmlTag(const xmlTag& tag)
         :
-            OStringStream(tag),
+            OStringStream(static_cast<const OStringStream&>(tag)),
             name_(tag.name_),
             attributes_(tag.attributes_),
             children_(tag.children_)
