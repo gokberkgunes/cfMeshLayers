@@ -1373,13 +1373,13 @@ void Foam::Module::meshOctreeAddressing::calculateEdgeLeaves() const
             const label own = owner[fI];
             const label nei = neighbour[fI];
 
-            edgeLeaves.appendIfNotIn(edgeI, own);
+            edgeLeaves.appendUniq(edgeI, own);
 
             if (nei < 0)
             {
                 continue;
             }
-            edgeLeaves.appendIfNotIn(edgeI, nei);
+            edgeLeaves.appendUniq(edgeI, nei);
         }
     }
 }

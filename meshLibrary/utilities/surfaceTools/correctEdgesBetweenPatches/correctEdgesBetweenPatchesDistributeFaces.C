@@ -399,7 +399,7 @@ void Foam::Module::correctEdgesBetweenPatches::decomposeConcaveFaces()
                 if (e == ee)
                 {
                     ++nBndEdges;
-                    bndEdgePatches.appendIfNotIn(edgeInPatch[beI]);
+                    bndEdgePatches.appendUniq(edgeInPatch[beI]);
                     break;
                 }
             }

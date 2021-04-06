@@ -6,6 +6,7 @@
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
     Copyright (C) 2014-2017 Creative Fields, Ltd.
+    Copyright (C) 2021 OpenCFD Ltd.
 -------------------------------------------------------------------------------
 Author
      Franjo Juretic (franjo.juretic@c-fields.com)
@@ -66,7 +67,7 @@ Ostream& operator<<(Ostream&, const subGraph<graphType>&);
 template<class graphType>
 class subGraph
 {
-    // Private data
+    // Private Data
 
         //- reference to the graph
         graphType& data_;
@@ -78,7 +79,7 @@ class subGraph
         const label size_;
 
 
-    // Private member functions
+    // Private Member Functions
 
         //- check index
         inline void checkIndex(const label i) const;
@@ -114,7 +115,7 @@ public:
         inline void append(const label rowI, const label);
 
         //- Append an element to the given row if it does not exist there
-        inline void appendIfNotIn(const label rowI, const label);
+        inline void appendUniq(const label rowI, const label);
 
         //- check if the element is in the given row (takes linear time)
         inline bool found(const label rowI, const label e) const;
@@ -135,6 +136,15 @@ public:
             Ostream&,
             const subGraph<graphType>&
         );
+
+
+    // Housekeeping
+
+        //- Same as appendUniq()
+        void appendIfNotIn(const label rowI, const label val)
+        {
+            this->appendUniq(rowI, val);
+        }
 };
 
 

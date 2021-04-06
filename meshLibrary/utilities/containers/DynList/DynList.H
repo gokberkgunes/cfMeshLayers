@@ -6,7 +6,7 @@
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
      Copyright (C) 2014-2017 Creative Fields, Ltd.
-     Copyright (C) 2018 OpenCFD Ltd.
+     Copyright (C) 2018-2021 OpenCFD Ltd.
 -------------------------------------------------------------------------------
 Author
      Franjo Juretic (franjo.juretic@c-fields.com)
@@ -206,7 +206,7 @@ public:
 
         //- Append an element at the end of the list if it is not yet
         //- present in the list (takes linear time)
-        inline void appendIfNotIn(const T& val);
+        inline void appendUniq(const T& val);
 
         //- Remove and return the last element. Fatal on an empty list.
         inline T remove();
@@ -247,6 +247,15 @@ public:
             Istream& is,
             DynList<T, SizeMin>& list
         );
+
+
+    // Housekeeping
+
+        //- Same as appendUniq()
+        void appendIfNotIn(const label rowI, const label val)
+        {
+            this->appendUniq(rowI, val);
+        }
 };
 
 

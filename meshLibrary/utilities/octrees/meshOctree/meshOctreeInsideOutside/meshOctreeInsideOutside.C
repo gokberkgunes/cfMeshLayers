@@ -262,8 +262,8 @@ void Foam::Module::meshOctreeInsideOutside::frontalMarking()
 
             if (neiGroup != -1)
             {
-                localNeiGroups[groupI].appendIfNotIn(neiGroup);
-                localNeiGroups[neiGroup].appendIfNotIn(groupI);
+                localNeiGroups[groupI].appendUniq(neiGroup);
+                localNeiGroups[neiGroup].appendUniq(groupI);
             }
         }
 
@@ -277,7 +277,7 @@ void Foam::Module::meshOctreeInsideOutside::frontalMarking()
             {
                 const DynList<label>& lGroups = localNeiGroups[groupI];
 
-                neighbouringGroups_.appendIfNotIn(groupI, groupI);
+                neighbouringGroups_.appendUniq(groupI, groupI);
 
                 forAll(lGroups, i)
                 {
@@ -529,7 +529,7 @@ void Foam::Module::meshOctreeInsideOutside::reviseDataBoxes()
                     oc->slotPtr()->containedTriangles_;
                 const constRow el = ct[oc->containedElements()];
                 forAll(el, elI)
-                    patches.appendIfNotIn(surface[el[elI]].region());
+                    patches.appendUniq(surface[el[elI]].region());
 
                 if (patches.size() > 1)
                     continue;

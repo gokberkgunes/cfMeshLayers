@@ -461,11 +461,11 @@ void Foam::Module::partTetMesh::createSMOOTHPointsOrdering() const
                     {
                         if (smoothVertex_[tet[i]] & (FACECENTRE + CELLCENTRE))
                         {
-                            neiCentrePoints.appendIfNotIn(tet[i]);
+                            neiCentrePoints.appendUniq(tet[i]);
                         }
                         else if (smoothVertex_[tet[i]] & SMOOTH)
                         {
-                            neiSmoothPoints.appendIfNotIn(tet[i]);
+                            neiSmoothPoints.appendUniq(tet[i]);
                         }
                     }
                 }
@@ -483,7 +483,7 @@ void Foam::Module::partTetMesh::createSMOOTHPointsOrdering() const
                         {
                             if (smoothVertex_[tet[i]] & SMOOTH)
                             {
-                                neiSmoothPoints.appendIfNotIn(tet[i]);
+                                neiSmoothPoints.appendUniq(tet[i]);
                             }
                         }
                     }
@@ -549,11 +549,11 @@ void Foam::Module::partTetMesh::createBOUNDARYPointsOrdering() const
                     {
                         if (smoothVertex_[tet[i]] & (FACECENTRE + CELLCENTRE))
                         {
-                            neiCentrePoints.appendIfNotIn(tet[i]);
+                            neiCentrePoints.appendUniq(tet[i]);
                         }
                         else if (smoothVertex_[tet[i]] & BOUNDARY)
                         {
-                            neiSmoothPoints.appendIfNotIn(tet[i]);
+                            neiSmoothPoints.appendUniq(tet[i]);
                         }
                     }
                 }
@@ -571,7 +571,7 @@ void Foam::Module::partTetMesh::createBOUNDARYPointsOrdering() const
                         {
                             if (smoothVertex_[tet[i]] & BOUNDARY)
                             {
-                                neiSmoothPoints.appendIfNotIn(tet[i]);
+                                neiSmoothPoints.appendUniq(tet[i]);
                             }
                         }
                     }

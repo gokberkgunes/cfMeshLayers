@@ -533,7 +533,7 @@ void Foam::Module::boundaryLayers::createLayerCells
             DynList<label, 3> patchIDs;
             forAll(fPatches, fpI)
             {
-                patchIDs.appendIfNotIn(fPatches[fpI]);
+                patchIDs.appendUniq(fPatches[fpI]);
             }
 
             nodePatches.insert(std::make_pair(bPoints[iter->first], patchIDs));
@@ -587,7 +587,7 @@ void Foam::Module::boundaryLayers::createLayerCells
         DynList<label, 3> patchIDs;
         forAll(pFaces, patchI)
         {
-            patchIDs.appendIfNotIn(boundaryFacePatches[pFaces[patchI]]);
+            patchIDs.appendUniq(boundaryFacePatches[pFaces[patchI]]);
         }
 
         nodePatches.insert(std::make_pair(iter->first, patchIDs));
@@ -607,7 +607,7 @@ void Foam::Module::boundaryLayers::createLayerCells
                 continue;
             }
 
-            pKeys.appendIfNotIn(pKey);
+            pKeys.appendUniq(pKey);
         }
 
         if (pKeys.size() != 3)

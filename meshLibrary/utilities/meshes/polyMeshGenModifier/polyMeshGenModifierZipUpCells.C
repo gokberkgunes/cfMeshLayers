@@ -716,7 +716,7 @@ void Foam::Module::polyMeshGenModifier::zipUpCells()
                             }
 
                             forAll(newFace, pI)
-                                pFaces.appendIfNotIn
+                                pFaces.appendUniq
                                 (
                                     newFace[pI],
                                     currentFaceIndex

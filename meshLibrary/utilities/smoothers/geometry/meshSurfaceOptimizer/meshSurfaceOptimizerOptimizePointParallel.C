@@ -384,7 +384,7 @@ void Foam::Module::meshSurfaceOptimizer::edgeNodeDisplacementParallel
     {
         const refLabelledPoint& lp = receivedData[prI];
         DynList<labelledPoint, 2>& lPts = mPts[lp.objectLabel()];
-        lPts.appendIfNotIn(receivedData[prI].lPoint());
+        lPts.appendUniq(receivedData[prI].lPoint());
     }
 
     // Finally, the data is ready to start smoothing

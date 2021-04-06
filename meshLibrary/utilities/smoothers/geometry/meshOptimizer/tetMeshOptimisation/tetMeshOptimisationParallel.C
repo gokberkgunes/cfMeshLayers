@@ -143,7 +143,7 @@ void Foam::Module::tetMeshOptimisation::exchangeData
 
             // add processor labels
             forAllRow(pProcs, vI, procI)
-                sendToProcs.appendIfNotIn(pProcs(vI, procI));
+                sendToProcs.appendUniq(pProcs(vI, procI));
 
             // add data into the map of proc bnd points
             DynList<parPartTet>& data = m[vI];

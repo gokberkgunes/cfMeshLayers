@@ -80,7 +80,7 @@ Istream& operator>>
 template<class T, label width>
 class FRWGraph
 {
-    // Private data
+    // Private Data
 
         //- list containing the data
         LongList<T> data_;
@@ -89,7 +89,8 @@ class FRWGraph
         label nRows_;
 
 
-    // Private member functions
+    // Private Member Functions
+
         //- check index
         void checkIndex(const label i, const label j) const;
 

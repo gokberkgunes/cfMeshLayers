@@ -415,7 +415,7 @@ void Foam::Module::partTetMesh::createBufferLayers()
                         continue;
                     }
 
-                    sendToProcs.appendIfNotIn(neiProc);
+                    sendToProcs.appendUniq(neiProc);
                 }
             }
         }
@@ -441,7 +441,7 @@ void Foam::Module::partTetMesh::createBufferLayers()
                         pAtBufferLayers.append(pt[j]);
                     }
 
-                    pProcs.appendIfNotIn(pt[j], sendToProcs[i]);
+                    pProcs.appendUniq(pt[j], sendToProcs[i]);
                 }
             }
         }

@@ -231,7 +231,7 @@ void Foam::Module::partTriMesh::updateVertex(const label pI, const point& newP)
         const label centreI = surf_[pointFacets(pI, ptI)][2];
         if (pointType_[centreI] & FACECENTRE)
         {
-            helper.appendIfNotIn(centreI);
+            helper.appendUniq(centreI);
         }
     }
 

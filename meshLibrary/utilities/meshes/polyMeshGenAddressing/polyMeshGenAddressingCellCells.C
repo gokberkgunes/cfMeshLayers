@@ -93,7 +93,7 @@ void Foam::Module::polyMeshGenAddressing::calcCellCells() const
 
                     if (neiCell != cellI)
                     {
-                        neiCells.appendIfNotIn(neiCell);
+                        neiCells.appendUniq(neiCell);
                     }
                 }
 
@@ -129,7 +129,7 @@ void Foam::Module::polyMeshGenAddressing::calcCellCells() const
 
                     if (neiCell != cellI)
                     {
-                        neiCells.appendIfNotIn(neiCell);
+                        neiCells.appendUniq(neiCell);
                     }
                 }
 

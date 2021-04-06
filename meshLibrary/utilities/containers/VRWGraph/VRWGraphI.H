@@ -6,6 +6,7 @@
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
     Copyright (C) 2014-2017 Creative Fields, Ltd.
+    Copyright (C) 2021 OpenCFD Ltd.
 -------------------------------------------------------------------------------
 Author
      Franjo Juretic (franjo.juretic@c-fields.com)
@@ -375,7 +376,7 @@ inline void Foam::Module::VRWGraph::append(const label rowI, const label el)
 }
 
 
-inline void Foam::Module::VRWGraph::appendIfNotIn
+inline void Foam::Module::VRWGraph::appendUniq
 (
     const label rowI,
     const label el

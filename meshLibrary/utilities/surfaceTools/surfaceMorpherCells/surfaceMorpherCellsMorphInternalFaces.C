@@ -287,8 +287,8 @@ bool Foam::Module::surfaceMorpherCells::morphInternalFaces()
                             if (nodeMaterial[fLabel])
                                 continue;
                             nodeMaterial[fLabel] = mat;
-                            edgeMats[mat - 1].appendIfNotIn(f.faceEdge(fLabel));
-                            edgeMats[mat - 1].appendIfNotIn
+                            edgeMats[mat - 1].appendUniq(f.faceEdge(fLabel));
+                            edgeMats[mat - 1].appendUniq
                             (
                                 f.faceEdge(f.rcIndex(fLabel))
                             );
@@ -414,11 +414,11 @@ bool Foam::Module::surfaceMorpherCells::morphInternalFaces()
                                     const label fLabel = front[pI];
                                     if (nodeMaterial[fLabel]) continue;
                                     nodeMaterial[fLabel] = mat;
-                                    edgeMats[mat - 1].appendIfNotIn
+                                    edgeMats[mat - 1].appendUniq
                                     (
                                         f.faceEdge(fLabel)
                                     );
-                                    edgeMats[mat - 1].appendIfNotIn
+                                    edgeMats[mat - 1].appendUniq
                                     (
                                         f.faceEdge(f.rcIndex(fLabel))
                                     );

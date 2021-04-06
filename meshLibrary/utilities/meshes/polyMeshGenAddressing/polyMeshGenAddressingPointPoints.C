@@ -78,8 +78,8 @@ void Foam::Module::polyMeshGenAddressing::calcPointPoints() const
                     const face& f = faces[pointFaces(pointI, pfI)];
 
                     const label pos = f.which(pointI);
-                    helper.appendIfNotIn(f.prevLabel(pos));
-                    helper.appendIfNotIn(f.nextLabel(pos));
+                    helper.appendUniq(f.prevLabel(pos));
+                    helper.appendUniq(f.nextLabel(pos));
                 }
 
                 nPoints[pointI] = helper.size();
@@ -109,8 +109,8 @@ void Foam::Module::polyMeshGenAddressing::calcPointPoints() const
                     const label pLabel = f.prevLabel(pos);
                     const label nLabel = f.nextLabel(pos);
 
-                    helper.appendIfNotIn(nLabel);
-                    helper.appendIfNotIn(pLabel);
+                    helper.appendUniq(nLabel);
+                    helper.appendUniq(pLabel);
                 }
 
                 pp.setRow(pointI, helper);

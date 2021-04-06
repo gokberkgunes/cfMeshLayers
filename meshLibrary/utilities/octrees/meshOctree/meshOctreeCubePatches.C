@@ -47,7 +47,7 @@ void Foam::Module::meshOctree::findBoundaryPatchesForLeaf
         const constRow ce =
             ct[leaves_[leafI]->containedElements()];
         forAll(ce, elI)
-            patches.appendIfNotIn(surface_[ce[elI]].region());
+            patches.appendUniq(surface_[ce[elI]].region());
     }
     else
     {

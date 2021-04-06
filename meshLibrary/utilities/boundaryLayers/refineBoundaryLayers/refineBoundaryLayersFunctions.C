@@ -149,7 +149,7 @@ bool Foam::Module::refineBoundaryLayers::analyseLayers()
     List<DynList<label>> groupsAtPatch(boundaries.size());
     forAll(faceInLayer, bfI)
     {
-        groupsAtPatch[facePatch[bfI]].appendIfNotIn(faceInLayer[bfI]);
+        groupsAtPatch[facePatch[bfI]].appendUniq(faceInLayer[bfI]);
     }
 
     // set the information which patches have an extruded layer

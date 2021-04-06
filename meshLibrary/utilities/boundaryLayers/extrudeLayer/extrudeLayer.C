@@ -1388,11 +1388,11 @@ void Foam::Module::extrudeLayer::updateBoundary()
         {
             if (origPointLabel_[f[pI]] < 0)
             {
-                origPts.appendIfNotIn(f[pI]);
+                origPts.appendUniq(f[pI]);
             }
             else
             {
-                origPts.appendIfNotIn(origPointLabel_[f[pI]]);
+                origPts.appendUniq(origPointLabel_[f[pI]]);
                 newPts.append(f[pI]);
             }
         }

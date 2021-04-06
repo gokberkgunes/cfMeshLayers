@@ -6,6 +6,7 @@
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
     Copyright (C) 2014-2017 Creative Fields, Ltd.
+    Copyright (C) 2021 OpenCFD Ltd.
 -------------------------------------------------------------------------------
 Author
      Franjo Juretic (franjo.juretic@c-fields.com)
@@ -316,8 +317,8 @@ Foam::label Foam::Module::help::groupMarking
 
             if (neiGroup != -1)
             {
-                localNeiGroups[groupI].appendIfNotIn(neiGroup);
-                localNeiGroups[neiGroup].appendIfNotIn(groupI);
+                localNeiGroups[groupI].appendUniq(neiGroup);
+                localNeiGroups[neiGroup].appendUniq(groupI);
             }
         }
 
@@ -331,11 +332,11 @@ Foam::label Foam::Module::help::groupMarking
             {
                 const DynList<label>& lGroups = localNeiGroups[groupI];
 
-                neighbouringGroups.appendIfNotIn(groupI, groupI);
+                neighbouringGroups.appendUniq(groupI, groupI);
 
                 forAll(lGroups, i)
                 {
-                    neighbouringGroups.appendIfNotIn(groupI, lGroups[i]);
+                    neighbouringGroups.appendUniq(groupI, lGroups[i]);
                 }
             }
         }
@@ -488,8 +489,8 @@ Foam::label Foam::Module::help::groupMarking
                 {
                     const labelPair& lp = connections[i];
 
-                    allGroups.appendIfNotIn(lp.first(), lp.second());
-                    allGroups.appendIfNotIn(lp.second(), lp.first());
+                    allGroups.appendUniq(lp.first(), lp.second());
+                    allGroups.appendUniq(lp.second(), lp.first());
                 }
             }
 

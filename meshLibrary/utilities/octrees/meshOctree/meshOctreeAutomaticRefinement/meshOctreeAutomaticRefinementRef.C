@@ -302,7 +302,7 @@ refineBasedOnContainedPartitions
         patches.clear();
         forAll(helper, i)
         {
-            patches.appendIfNotIn(surf[helper[i]].region());
+            patches.appendUniq(surf[helper[i]].region());
         }
 
         // find edge partitions contained in this box
@@ -311,7 +311,7 @@ refineBasedOnContainedPartitions
         eGroups.clear();
         forAll(helper, i)
         {
-            eGroups.appendIfNotIn(edgeGroups[helper[i]]);
+            eGroups.appendUniq(edgeGroups[helper[i]]);
         }
 
         # ifdef DEBUGAutoRef

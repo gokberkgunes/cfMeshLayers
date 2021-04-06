@@ -6,6 +6,7 @@
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
     Copyright (C) 2014-2017 Creative Fields, Ltd.
+    Copyright (C) 2021 OpenCFD Ltd.
 -------------------------------------------------------------------------------
 Author
      Franjo Juretic (franjo.juretic@c-fields.com)
@@ -180,7 +181,7 @@ public:
 
         //- Append an element at the end of the list if it is not yet
         //- present in the list (takes linear time)
-        inline void appendIfNotIn(const T& e);
+        inline void appendUniq(const T& e);
 
         //- check if the element is in the list (takes linear time)
         inline bool found(const T& e) const;
@@ -235,6 +236,15 @@ public:
             Istream&,
             LongList<T, Offset>&
         );
+
+
+    // Housekeeping
+
+        //- Same as appendUniq()
+        void appendIfNotIn(const label val)
+        {
+            this->appendUniq(val);
+        }
 };
 
 

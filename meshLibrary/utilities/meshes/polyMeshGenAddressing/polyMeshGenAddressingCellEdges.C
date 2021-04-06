@@ -87,7 +87,7 @@ void Foam::Module::polyMeshGenAddressing::calcCellEdges() const
 
                     forAllRow(fe, faceI, eI)
                     {
-                        cEdges.appendIfNotIn(fe(faceI, eI));
+                        cEdges.appendUniq(fe(faceI, eI));
                     }
                 }
 
@@ -118,7 +118,7 @@ void Foam::Module::polyMeshGenAddressing::calcCellEdges() const
 
                     forAllRow(fe, faceI, eI)
                     {
-                        cEdges.appendIfNotIn(fe(faceI, eI));
+                        cEdges.appendUniq(fe(faceI, eI));
                     }
                 }
 

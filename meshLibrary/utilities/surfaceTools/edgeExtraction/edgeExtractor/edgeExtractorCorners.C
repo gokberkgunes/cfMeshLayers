@@ -275,7 +275,7 @@ Foam::label Foam::Module::edgeExtractor::faceEvaluator::bestPatchTopological
     // find indices of all neighbour patches
     DynList<label> allNeiPatches;
     forAll(neiPatches, i)
-        allNeiPatches.appendIfNotIn(neiPatches[i]);
+        allNeiPatches.appendUniq(neiPatches[i]);
 
     if ((allNeiPatches.size() == 1) && (allNeiPatches[0] == currentPatch))
         return currentPatch;

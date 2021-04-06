@@ -114,7 +114,7 @@ void Foam::Module::meshSurfaceMapper::preMapVertices(const label nIterations)
                 meshOctree_.containedTriangles(containedLeaves[clI], ct);
 
                 forAll(ct, i)
-                    patches.appendIfNotIn(surf[ct[i]].region());
+                    patches.appendUniq(surf[ct[i]].region());
             }
 
             scalar metric(VGREAT);
@@ -131,7 +131,7 @@ void Foam::Module::meshSurfaceMapper::preMapVertices(const label nIterations)
             }
 
             forAll(bf, pI)
-                boundaryPointPatches[bp[bf[pI]]].appendIfNotIn(bestPatch);
+                boundaryPointPatches[bp[bf[pI]]].appendUniq(bestPatch);
         }
 
         // use the shrinking laplace first

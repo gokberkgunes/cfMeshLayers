@@ -101,7 +101,7 @@ void Foam::Module::triSurfacePartitioner::calculateCornersAndAddressing()
 
         patches.clear();
         forAllRow(pointFaces, pointI, pfI)
-            patches.appendIfNotIn(surface_[pointFaces(pointI, pfI)].region());
+            patches.appendUniq(surface_[pointFaces(pointI, pfI)].region());
 
         corners_[nCorners] = pointI;
         cornerPatches_[nCorners] = patches;
@@ -148,7 +148,7 @@ void Foam::Module::triSurfacePartitioner::calculateEdgeGroups()
     {
         DynList<label> patches;
         forAllRow(edgeFaces, eI, efI)
-            patches.appendIfNotIn(surface_[edgeFaces(eI, efI)].region());
+            patches.appendUniq(surface_[edgeFaces(eI, efI)].region());
 
         if (patches.size() > 1)
             featureEdge[eI] = true;
@@ -222,7 +222,7 @@ void Foam::Module::triSurfacePartitioner::calculatePatchToEdgeGroups()
 
         DynList<label> patches;
         forAllRow(edgeFaces, eI, efI)
-            patches.appendIfNotIn(surface_[edgeFaces(eI, efI)].region());
+            patches.appendUniq(surface_[edgeFaces(eI, efI)].region());
 
         forAll(patches, i)
         {
@@ -255,7 +255,7 @@ void Foam::Module::triSurfacePartitioner::calculateEdgeGroupsToCorners()
         const label pointI = corners_[cornerI];
 
         forAllRow(pointEdges, pointI, peI)
-            edgeGroupsAtCorner.appendIfNotIn
+            edgeGroupsAtCorner.appendUniq
             (
                 edgeGroups_[pointEdges(pointI, peI)]
             );

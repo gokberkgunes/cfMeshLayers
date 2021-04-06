@@ -105,8 +105,8 @@ void Foam::Module::polyMeshGenAddressing::calcGlobalPointLabels() const
                 );
                 patchPointsMap.insert(std::make_pair(f[pI], pp));
 
-                pProcs.appendIfNotIn(f[pI], procBoundaries[patchI].myProcNo());
-                pProcs.appendIfNotIn(f[pI], procBoundaries[patchI].neiProcNo());
+                pProcs.appendUniq(f[pI], procBoundaries[patchI].myProcNo());
+                pProcs.appendUniq(f[pI], procBoundaries[patchI].neiProcNo());
             }
         }
     }
@@ -306,7 +306,7 @@ void Foam::Module::polyMeshGenAddressing::calcGlobalPointLabels() const
 
             forAllRow(pProcs, pointI, i)
             {
-                pNeiProcs.appendIfNotIn(pProcs(pointI, i));
+                pNeiProcs.appendUniq(pProcs(pointI, i));
             }
         }
     }
@@ -531,12 +531,12 @@ void Foam::Module::polyMeshGenAddressing::calcGlobalEdgeLabels() const
         {
             forAllRow(faceEdges, faceI, eI)
             {
-                eProcs.appendIfNotIn
+                eProcs.appendUniq
                 (
                     faceEdges(faceI, eI),
                     procBoundaries[patchI].myProcNo()
                 );
-                eProcs.appendIfNotIn
+                eProcs.appendUniq
                 (
                     faceEdges(faceI, eI),
                     procBoundaries[patchI].neiProcNo()
@@ -767,7 +767,7 @@ void Foam::Module::polyMeshGenAddressing::calcGlobalEdgeLabels() const
             globalToLocal.insert(globalEdgeLabel[edgeI], edgeI);
 
             forAllRow(eProcs, edgeI, i)
-                eNeiProcs.appendIfNotIn(eProcs(edgeI, i));
+                eNeiProcs.appendUniq(eProcs(edgeI, i));
         }
     }
 }

@@ -267,7 +267,7 @@ public:
             DynList<label>& ng = neiGroups[localGroupLabel[groupI]];
 
             // store the connection over the inter-processor boundary
-            ng.appendIfNotIn(lp.second());
+            ng.appendUniq(lp.second());
         }
     }
 };
@@ -466,7 +466,7 @@ void Foam::Module::detectBoundaryLayers::analyseLayers()
 
     forAll(facePatch, bfI)
     {
-        patchToLayer[facePatch[bfI]].appendIfNotIn(layerAtBndFace_[bfI]);
+        patchToLayer[facePatch[bfI]].appendUniq(layerAtBndFace_[bfI]);
     }
 
     // all faces of a patch must be in the same layer

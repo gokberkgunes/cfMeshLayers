@@ -233,7 +233,7 @@ void Foam::Module::edgeExtractor::findPatchesNearSurfaceFace()
             meshOctree_.findTrianglesInBox(bb, nearFacets);
             DynList<label> nearPatches;
             forAll(nearFacets, i)
-                nearPatches.appendIfNotIn(surface[nearFacets[i]].region());
+                nearPatches.appendUniq(surface[nearFacets[i]].region());
 
             localData.append(bfI);
             nPatchesAtFace[bfI] = nearPatches.size();
@@ -568,11 +568,11 @@ void Foam::Module::edgeExtractor::findFaceCandidates
                     if (fNei == bfI)
                         fNei = edgeFaces(beI, 1);
 
-                    allNeiPatches.appendIfNotIn(fPatches[fNei]);
+                    allNeiPatches.appendUniq(fPatches[fNei]);
                 }
                 else if (edgeFaces.sizeOfRow(beI) == 1)
                 {
-                    allNeiPatches.appendIfNotIn(otherFacePatch[beI]);
+                    allNeiPatches.appendUniq(otherFacePatch[beI]);
                 }
             }
 
@@ -1003,12 +1003,12 @@ bool Foam::Module::edgeExtractor::distributeBoundaryFacesNormalAlignment()
                     if (fNei == bfI)
                         fNei = edgeFaces(faceEdges(bfI, eI), 1);
 
-                    allNeiPatches.appendIfNotIn(facePatch_[fNei]);
+                    allNeiPatches.appendUniq(facePatch_[fNei]);
                     neiPatches[eI] = facePatch_[fNei];
                 }
                 else if (edgeFaces.sizeOfRow(beI) == 1)
                 {
-                    allNeiPatches.appendIfNotIn(otherProcNewPatch[beI]);
+                    allNeiPatches.appendUniq(otherProcNewPatch[beI]);
                     neiPatches[eI] = otherProcNewPatch[beI];
                 }
             }
@@ -1194,12 +1194,12 @@ void Foam::Module::edgeExtractor::findEdgeCandidates()
 
                         if (p0 != p1)
                         {
-                            featureEdgeCandidates.appendIfNotIn(seI);
+                            featureEdgeCandidates.appendUniq(seI);
                         }
                     }
                     else
                     {
-                        featureEdgeCandidates.appendIfNotIn(seI);
+                        featureEdgeCandidates.appendUniq(seI);
                     }
                 }
             }
@@ -1730,12 +1730,12 @@ bool Foam::Module::edgeExtractor::checkFacePatchesTopology()
                     if (fNei == bfI)
                         fNei = edgeFaces(faceEdges(bfI, eI), 1);
 
-                    allNeiPatches.appendIfNotIn(facePatch_[fNei]);
+                    allNeiPatches.appendUniq(facePatch_[fNei]);
                     neiPatches[eI] = facePatch_[fNei];
                 }
                 else if (edgeFaces.sizeOfRow(beI) == 1)
                 {
-                    allNeiPatches.appendIfNotIn(otherProcNewPatch[beI]);
+                    allNeiPatches.appendUniq(otherProcNewPatch[beI]);
                     neiPatches[eI] = otherProcNewPatch[beI];
                 }
             }
@@ -2044,7 +2044,7 @@ public:
             DynList<label>& ng = neiGroups[localGroupLabel[groupI]];
 
             // store the connection over the inter-processor boundary
-            ng.appendIfNotIn(lp.second());
+            ng.appendUniq(lp.second());
         }
     }
 };
@@ -2197,7 +2197,7 @@ bool Foam::Module::edgeExtractor::checkFacePatchesGeometry()
 
             DynList<label> allNeiPatches;
             forAll(neiPatches, i)
-                allNeiPatches.appendIfNotIn(neiPatches[i]);
+                allNeiPatches.appendUniq(neiPatches[i]);
 
             // check the deformation energy and find the minimum energy which
             // can be achieved by switching face patch
@@ -2288,7 +2288,7 @@ void Foam::Module::edgeExtractor::projectDeterminedFeatureVertices()
         const face& bf = bFaces[bfI];
 
         forAll(bf, pI)
-            pointPatches[bp[bf[pI]]].appendIfNotIn(facePatch_[bfI]);
+            pointPatches[bp[bf[pI]]].appendUniq(facePatch_[bfI]);
     }
 
     if (Pstream::parRun())
@@ -2335,7 +2335,7 @@ void Foam::Module::edgeExtractor::projectDeterminedFeatureVertices()
         {
             const labelPair& lp = receivedData[i];
 
-            pointPatches[globalToLocal[lp.first()]].appendIfNotIn(lp.second());
+            pointPatches[globalToLocal[lp.first()]].appendUniq(lp.second());
         }
     }
 

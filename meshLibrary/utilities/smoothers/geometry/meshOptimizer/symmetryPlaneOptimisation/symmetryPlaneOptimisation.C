@@ -139,7 +139,7 @@ bool Foam::Module::symmetryPlaneOptimisation::pointInPlanes
                             foundProblematic = true;
                     }
 
-                    pointInPlanes.appendIfNotIn(f[pI], patchI);
+                    pointInPlanes.appendUniq(f[pI], patchI);
                 }
             }
         }
@@ -189,7 +189,7 @@ bool Foam::Module::symmetryPlaneOptimisation::pointInPlanes
 
             const label size = receivedData[counter++];
             for (label i = 0; i < size; ++i)
-                pointInPlanes.appendIfNotIn(pointI, receivedData[counter++]);
+                pointInPlanes.appendUniq(pointI, receivedData[counter++]);
         }
     }
 

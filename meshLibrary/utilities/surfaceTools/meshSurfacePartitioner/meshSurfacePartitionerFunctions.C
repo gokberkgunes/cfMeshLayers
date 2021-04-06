@@ -210,7 +210,7 @@ void Foam::Module::meshSurfacePartitioner::calculateCornersEdgesAndAddressing()
     forAll(pointFaces, bpI)
     {
         forAllRow(pointFaces, bpI, pfI)
-            pointPatches_.appendIfNotIn(bpI, facePatch_[pointFaces(bpI, pfI)]);
+            pointPatches_.appendUniq(bpI, facePatch_[pointFaces(bpI, pfI)]);
     }
 
     if (Pstream::parRun())
@@ -255,7 +255,7 @@ void Foam::Module::meshSurfacePartitioner::calculateCornersEdgesAndAddressing()
             const label size = receivedData[counter++];
 
             for (label i = 0; i < size; ++i)
-                pointPatches_.appendIfNotIn(bpI, receivedData[counter++]);
+                pointPatches_.appendUniq(bpI, receivedData[counter++]);
         }
     }
 

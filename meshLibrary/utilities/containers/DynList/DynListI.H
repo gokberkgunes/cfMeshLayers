@@ -6,7 +6,7 @@
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
      Copyright (C) 2014-2017 Creative Fields, Ltd.
-     Copyright (C) 2018 OpenCFD Ltd.
+     Copyright (C) 2018-2021 OpenCFD Ltd.
 -------------------------------------------------------------------------------
 Author
      Franjo Juretic (franjo.juretic@c-fields.com)
@@ -385,7 +385,7 @@ inline void Foam::Module::DynList<T, SizeMin>::append(const T& val)
 
 
 template<class T, int SizeMin>
-inline void Foam::Module::DynList<T, SizeMin>::appendIfNotIn(const T& val)
+inline void Foam::Module::DynList<T, SizeMin>::appendUniq(const T& val)
 {
     if (!UList<T>::found(val))
     {

@@ -83,7 +83,7 @@ void Foam::Module::polyMeshGenAddressing::calcCellPoints() const
 
                     forAll(f, pI)
                     {
-                        cPoints.appendIfNotIn(f[pI]);
+                        cPoints.appendUniq(f[pI]);
                     }
                 }
 
@@ -113,7 +113,7 @@ void Foam::Module::polyMeshGenAddressing::calcCellPoints() const
 
                     forAll(f, pI)
                     {
-                        cPoints.appendIfNotIn(f[pI]);
+                        cPoints.appendUniq(f[pI]);
                     }
                 }
 

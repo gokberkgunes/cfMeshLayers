@@ -6,6 +6,7 @@
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
     Copyright (C) 2014-2017 Creative Fields, Ltd.
+    Copyright (C) 2021 OpenCFD Ltd.
 -------------------------------------------------------------------------------
 Author
      Franjo Juretic (franjo.juretic@c-fields.com)
@@ -100,13 +101,13 @@ inline void Foam::Module::subGraph<graphType>::append
 
 
 template<class graphType>
-inline void Foam::Module::subGraph<graphType>::appendIfNotIn
+inline void Foam::Module::subGraph<graphType>::appendUniq
 (
     const label rowI,
     const label el
 )
 {
-    data_.appendIfNotIn(start_ + rowI, el);
+    data_.appendUniq(start_ + rowI, el);
 }
 
 

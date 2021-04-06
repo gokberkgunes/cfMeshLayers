@@ -501,7 +501,7 @@ void Foam::Module::triSurfaceCurvatureEstimator::calculateSurfaceCurvatures()
                         if (neiPointI == pointI)
                             continue;
 
-                        patchNeiPoints[tri.region()].appendIfNotIn(neiPointI);
+                        patchNeiPoints[tri.region()].appendUniq(neiPointI);
                     }
                 }
 

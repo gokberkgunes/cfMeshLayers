@@ -437,7 +437,7 @@ void Foam::Module::partTetMesh::updateVertex
         const label centreI = tets_[pointTets_(pointI, ptI)][2];
         if (smoothVertex_[centreI] & FACECENTRE)
         {
-            helper.appendIfNotIn(centreI);
+            helper.appendUniq(centreI);
         }
     }
 
@@ -473,7 +473,7 @@ void Foam::Module::partTetMesh::updateVertex
         const label centreI = tets_[pointTets_(pointI, ptI)][3];
         if (smoothVertex_[centreI] & CELLCENTRE)
         {
-            helper.appendIfNotIn(centreI);
+            helper.appendUniq(centreI);
         }
     }
 

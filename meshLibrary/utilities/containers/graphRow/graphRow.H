@@ -6,6 +6,7 @@
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
     Copyright (C) 2014-2017 Creative Fields, Ltd.
+    Copyright (C) 2021 OpenCFD Ltd.
 -------------------------------------------------------------------------------
 Author
      Franjo Juretic (franjo.juretic@c-fields.com)
@@ -107,7 +108,7 @@ public:
         inline void append(const label);
 
         //- Append an element to the given row if it does not exist there
-        inline void appendIfNotIn(const label);
+        inline void appendUniq(const label);
 
         //- check if the element is in the given row (takes linear time)
         inline bool found(const label e) const;
@@ -134,6 +135,14 @@ public:
             const graphRow<graphType>& r
         );
 
+
+    // Housekeeping
+
+        //- Same as appendUniq()
+        void appendIfNotIn(const label val)
+        {
+            this->appendUniq(val);
+        }
 };
 
 

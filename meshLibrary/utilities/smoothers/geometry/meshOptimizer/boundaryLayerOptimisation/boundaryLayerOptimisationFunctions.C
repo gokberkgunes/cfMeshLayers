@@ -372,7 +372,7 @@ void Foam::Module::boundaryLayerOptimisation::calculateHairEdges()
                 if (bpI < 0)
                     continue;
 
-                bpFacesHelper.appendIfNotIn(bpI, c[fI]);
+                bpFacesHelper.appendUniq(bpI, c[fI]);
             }
         }
     }

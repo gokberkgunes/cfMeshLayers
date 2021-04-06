@@ -482,11 +482,11 @@ bool Foam::Module::meshOctree::findNearestCorner
                         {
                             // found an edge attached to this vertex
                             ++nEdges;
-                            nodePatches.appendIfNotIn
+                            nodePatches.appendUniq
                             (
                                 surface_[eFacets(eI, 0)].region()
                             );
-                            nodePatches.appendIfNotIn
+                            nodePatches.appendUniq
                             (
                                 surface_[eFacets(eI, 1)].region()
                             );

@@ -83,21 +83,24 @@ int main(int argc, char *argv[])
     (
         IOdictionary
         (
-            decompositionModel::selectIO
+            IOobject::selectIO
             (
                 IOobject
                 (
-                    "decomposeParDict",
+                    decompositionModel::canonicalName,
                     runTime.time().system(),
                     runTime,
                     IOobject::MUST_READ,
                     IOobject::NO_WRITE,
-                    false
+                    false       // do not register
                 ),
                 decompDictFile
             )
         )
     );
+
+    // Give file handler a chance to determine the output directory
+    const_cast<fileOperation&>(fileHandler()).setNProcs(nDomains);
 
     for (label proci = 0; proci < nDomains; ++proci)
     {

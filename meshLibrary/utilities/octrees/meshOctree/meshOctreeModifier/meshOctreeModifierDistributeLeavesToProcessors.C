@@ -97,7 +97,7 @@ void Foam::Module::meshOctreeModifier::distributeLeavesToProcessors()
                 (cc <= procRange[procI].second())
             )
             {
-                neiProcs.appendIfNotIn(procI);
+                neiProcs.appendUniq(procI);
                 break;
             }
         }

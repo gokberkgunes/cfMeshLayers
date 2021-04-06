@@ -426,7 +426,7 @@ void Foam::Module::boundaryLayers::findPatchesToBeTreatedTogether()
                 const label size = cPatches[counter++];
                 for (label i = 0; i < size; ++i)
                 {
-                    treatPatchesWithPatch_[patchI].appendIfNotIn
+                    treatPatchesWithPatch_[patchI].appendUniq
                     (
                         cPatches[counter++]
                     );

@@ -94,7 +94,7 @@ void Foam::Module::meshOctreeAddressing::calcGlobalPointLabels() const
                 }
             }
 
-            procs.appendIfNotIn(octree_.returnLeaf(leafI).procNo());
+            procs.appendUniq(octree_.returnLeaf(leafI).procNo());
         }
 
         label minLeaf(octree_.numberOfLeaves());
@@ -209,7 +209,7 @@ void Foam::Module::meshOctreeAddressing::calcGlobalPointLabels() const
                 const label nProcs = receivedLabels[counter++];
                 for (label ppI = 0; ppI < nProcs; ++ppI)
                 {
-                    pointProcs.appendIfNotIn(nI, receivedLabels[counter++]);
+                    pointProcs.appendUniq(nI, receivedLabels[counter++]);
                 }
 
                 if (globalLabel < 0)
@@ -254,7 +254,7 @@ void Foam::Module::meshOctreeAddressing::calcGlobalPointLabels() const
                 dts.append(globalPointLabel[nodeI]);
 
                 // add the current processor
-                pointProcs.appendIfNotIn(nodeI, Pstream::myProcNo());
+                pointProcs.appendUniq(nodeI, Pstream::myProcNo());
 
                 dts.append(pointProcs.sizeOfRow(nodeI));
                 forAllRow(pointProcs, nodeI, ppI)
@@ -303,7 +303,7 @@ void Foam::Module::meshOctreeAddressing::calcGlobalPointLabels() const
 
                 const label nProcs = receivedLabels[counter++];
                 for (label ppI = 0; ppI < nProcs; ++ppI)
-                    pointProcs.appendIfNotIn(nI, receivedLabels[counter++]);
+                    pointProcs.appendUniq(nI, receivedLabels[counter++]);
 
                 if (globalLabel < 0)
                 {
@@ -347,7 +347,7 @@ void Foam::Module::meshOctreeAddressing::calcGlobalPointLabels() const
                 dts.append(globalPointLabel[nodeI]);
 
                 // add the current processor
-                pointProcs.appendIfNotIn(nodeI, Pstream::myProcNo());
+                pointProcs.appendUniq(nodeI, Pstream::myProcNo());
 
                 dts.append(pointProcs.sizeOfRow(nodeI));
                 forAllRow(pointProcs, nodeI, ppI)
@@ -489,8 +489,8 @@ void Foam::Module::meshOctreeAddressing::calcGlobalLeafLabels() const
         const label cLabel = octree_.findLeafLabelForPosition(rLeaves[i]);
 
         globalToLocal.insert(globalLeafLabel[cLabel], cLabel);
-        leafAtProcs.appendIfNotIn(cLabel, Pstream::myProcNo());
-        leafAtProcs.appendIfNotIn(cLabel, rLeaves[i].procNo());
+        leafAtProcs.appendUniq(cLabel, Pstream::myProcNo());
+        leafAtProcs.appendUniq(cLabel, rLeaves[i].procNo());
     }
 
     // now the global leaf labels shall be sent from the processors

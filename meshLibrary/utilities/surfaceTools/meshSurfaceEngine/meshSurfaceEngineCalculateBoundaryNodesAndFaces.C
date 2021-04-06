@@ -543,7 +543,7 @@ void Foam::Module::meshSurfaceEngine::calculatePointPatches() const
             DynList<label> pf;
             forAllRow(pFaces, bpI, pfI)
             {
-                pf.appendIfNotIn(facePatch[pFaces(bpI, pfI)]);
+                pf.appendUniq(facePatch[pFaces(bpI, pfI)]);
             }
 
             npPatches[bpI] = pf.size();
@@ -566,7 +566,7 @@ void Foam::Module::meshSurfaceEngine::calculatePointPatches() const
             DynList<label> pf;
             forAllRow(pFaces, bpI, pfI)
             {
-                pf.appendIfNotIn(facePatch[pFaces(bpI, pfI)]);
+                pf.appendUniq(facePatch[pFaces(bpI, pfI)]);
             }
 
             pPatches.setRow(bpI, pf);
@@ -628,7 +628,7 @@ void Foam::Module::meshSurfaceEngine::calculatePointPatches() const
             const label nPatches = receivedData[counter++];
             for (label i = 0; i < nPatches; ++i)
             {
-                pPatches.appendIfNotIn(bpI, receivedData[counter++]);
+                pPatches.appendUniq(bpI, receivedData[counter++]);
             }
         }
     }
@@ -680,8 +680,8 @@ void Foam::Module::meshSurfaceEngine::calculatePointPoints() const
 
                 const label pos = bf.which(boundaryPoints[bpI]);
 
-                pPoints.appendIfNotIn(bp[bf.nextLabel(pos)]);
-                pPoints.appendIfNotIn(bp[bf.prevLabel(pos)]);
+                pPoints.appendUniq(bp[bf.nextLabel(pos)]);
+                pPoints.appendUniq(bp[bf.prevLabel(pos)]);
             }
 
             npp[bpI] = pPoints.size();
@@ -709,8 +709,8 @@ void Foam::Module::meshSurfaceEngine::calculatePointPoints() const
 
                 const label pos = bf.which(boundaryPoints[bpI]);
 
-                pPoints.appendIfNotIn(bp[bf.nextLabel(pos)]);
-                pPoints.appendIfNotIn(bp[bf.prevLabel(pos)]);
+                pPoints.appendUniq(bp[bf.nextLabel(pos)]);
+                pPoints.appendUniq(bp[bf.prevLabel(pos)]);
             }
 
             pointPoints.setRow(bpI, pPoints);
@@ -785,7 +785,7 @@ void Foam::Module::meshSurfaceEngine::calculatePointPoints() const
                 const label gpI = receivedData[counter++];
                 if (globalToLocal.found(gpI))
                 {
-                    pointPoints.appendIfNotIn(bpI, globalToLocal[gpI]);
+                    pointPoints.appendUniq(bpI, globalToLocal[gpI]);
                 }
             }
         }
@@ -1374,7 +1374,7 @@ void Foam::Module::meshSurfaceEngine::calculateEdgePatchesAddressing() const
         {
             const label patchI = facePatch[edgeFaces(eI, i)];
 
-            ePatches.appendIfNotIn(patchI);
+            ePatches.appendUniq(patchI);
         }
 
         edgePatches.setRow(eI, ePatches);
@@ -1389,7 +1389,7 @@ void Foam::Module::meshSurfaceEngine::calculateEdgePatchesAddressing() const
         {
             const label beI = it();
 
-            edgePatches.appendIfNotIn(beI, otherPatch[beI]);
+            edgePatches.appendUniq(beI, otherPatch[beI]);
         }
     }
 }

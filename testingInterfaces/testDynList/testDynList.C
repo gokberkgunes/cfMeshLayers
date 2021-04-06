@@ -27,7 +27,7 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Description
-    Writes the mesh in fpma format readable by AVL's CfdWM
+    Basic tests of DynList
 
 \*---------------------------------------------------------------------------*/
 
@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 
     c.append(0.2);
 
-    b.appendIfNotIn(3);
+    b.appendUniq(3);
 
     c(1020) = 0.5;
 

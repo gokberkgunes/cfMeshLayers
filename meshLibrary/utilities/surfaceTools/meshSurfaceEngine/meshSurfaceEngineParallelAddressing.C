@@ -80,12 +80,12 @@ void Foam::Module::meshSurfaceEngine::calcGlobalBoundaryPointLabels() const
             forAll(f, pI)
                 if (bp[f[pI]] != -1)
                 {
-                    bpAtProcs.appendIfNotIn
+                    bpAtProcs.appendUniq
                     (
                         bp[f[pI]],
                         procBoundaries[patchI].myProcNo()
                     );
-                    bpAtProcs.appendIfNotIn
+                    bpAtProcs.appendUniq
                     (
                         bp[f[pI]],
                         procBoundaries[patchI].neiProcNo()
@@ -307,7 +307,7 @@ void Foam::Module::meshSurfaceEngine::calcGlobalBoundaryPointLabels() const
                 if (procI == Pstream::myProcNo())
                     continue;
 
-                bpNeiProcsPtr_->appendIfNotIn(procI);
+                bpNeiProcsPtr_->appendUniq(procI);
             }
         }
     }
@@ -379,12 +379,12 @@ void Foam::Module::meshSurfaceEngine::calcGlobalBoundaryEdgeLabels() const
                             std::make_pair(faceI, eI)
                         );
 
-                        beAtProcs.appendIfNotIn
+                        beAtProcs.appendUniq
                         (
                             edgeI,
                             procBoundaries[patchI].myProcNo()
                         );
-                        beAtProcs.appendIfNotIn
+                        beAtProcs.appendUniq
                         (
                             edgeI,
                             procBoundaries[patchI].neiProcNo()
@@ -641,7 +641,7 @@ void Foam::Module::meshSurfaceEngine::calcGlobalBoundaryEdgeLabels() const
                 if (procI == Pstream::myProcNo())
                     continue;
 
-                beNeiProcsPtr_->appendIfNotIn(procI);
+                beNeiProcsPtr_->appendUniq(procI);
             }
         }
     }

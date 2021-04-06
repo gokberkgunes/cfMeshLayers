@@ -6,6 +6,7 @@
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
     Copyright (C) 2014-2017 Creative Fields, Ltd.
+    Copyright (C) 2021 OpenCFD Ltd.
 -------------------------------------------------------------------------------
 Author
      Franjo Juretic (franjo.juretic@c-fields.com)
@@ -292,7 +293,7 @@ inline void Foam::Module::LongList<T, Offset>::append(const T& e)
 
 
 template<class T, int Offset>
-inline void Foam::Module::LongList<T, Offset>::appendIfNotIn(const T& e)
+inline void Foam::Module::LongList<T, Offset>::appendUniq(const T& e)
 {
     if (!found(e))
     {

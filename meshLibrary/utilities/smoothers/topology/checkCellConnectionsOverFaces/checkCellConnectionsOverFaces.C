@@ -161,7 +161,7 @@ public:
                 DynList<label>& ng = neiGroups[localGroupLabel[groupI]];
 
                 // store the connection over the inter-processor boundary
-                ng.appendIfNotIn(receivedData[faceI]);
+                ng.appendUniq(receivedData[faceI]);
             }
         }
     }

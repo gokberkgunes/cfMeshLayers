@@ -6,6 +6,7 @@
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
     Copyright (C) 2014-2017 Creative Fields, Ltd.
+    Copyright (C) 2021 OpenCFD Ltd.
 -------------------------------------------------------------------------------
 Author
      Franjo Juretic (franjo.juretic@c-fields.com)
@@ -232,7 +233,7 @@ public:
         inline void append(const label rowI, const label);
 
         //- Append an element to the given row if it does not exist there
-        inline void appendIfNotIn(const label rowI, const label);
+        inline void appendUniq(const label rowI, const label);
 
         //- Set row with the list
         template<class ListType>
@@ -294,6 +295,15 @@ public:
             VRWGraph<T, width>&
         );
 */
+
+
+    // Housekeeping
+
+        //- Same as appendUniq()
+        void appendIfNotIn(const label rowI, const label val)
+        {
+            this->appendUniq(rowI, val);
+        }
 };
 
 

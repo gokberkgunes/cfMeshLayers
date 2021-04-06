@@ -242,7 +242,7 @@ void Foam::Module::boundaryLayerOptimisation::calculateNormalVectorsSmother
         DynList<label> patchesAtPoint;
         forAllRow(pTriangles, triPointI, ptI)
         {
-            patchesAtPoint.appendIfNotIn
+            patchesAtPoint.appendUniq
             (
                 triangles[pTriangles(triPointI, ptI)].region()
             );

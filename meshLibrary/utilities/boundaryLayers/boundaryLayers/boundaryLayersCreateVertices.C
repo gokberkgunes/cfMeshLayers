@@ -146,7 +146,7 @@ Foam::point Foam::Module::boundaryLayers::createNewVertex
         {
             if (!treatPatches[pPatches(bpI, patchI)])
             {
-                otherPatches.appendIfNotIn
+                otherPatches.appendUniq
                 (
                     pPatches(bpI, patchI)
                 );
@@ -860,7 +860,7 @@ void Foam::Module::boundaryLayers::createNewEdgeVerticesParallel
                 continue;
             }
 
-            neiProcs.appendIfNotIn(neiProc);
+            neiProcs.appendUniq(neiProc);
         }
 
         if (pVertices[bpI] & EDGENODE)
@@ -910,7 +910,7 @@ void Foam::Module::boundaryLayers::createNewEdgeVerticesParallel
         {
             if (!treatPatches[pPatches(bpI, patchI)])
             {
-                otherPatches.appendIfNotIn(pPatches(bpI, patchI));
+                otherPatches.appendUniq(pPatches(bpI, patchI));
             }
         }
 
@@ -1033,7 +1033,7 @@ void Foam::Module::boundaryLayers::createNewEdgeVerticesParallel
         {
             if (!treatPatches[pPatches(bpI, patchI)])
             {
-                otherPatches.appendIfNotIn(pPatches(bpI, patchI));
+                otherPatches.appendUniq(pPatches(bpI, patchI));
             }
         }
 
@@ -1060,7 +1060,7 @@ void Foam::Module::boundaryLayers::createNewEdgeVerticesParallel
         {
             if (!treatPatches[pPatches(bpI, patchI)])
             {
-                otherPatches.appendIfNotIn(pPatches(bpI, patchI));
+                otherPatches.appendUniq(pPatches(bpI, patchI));
             }
         }
 

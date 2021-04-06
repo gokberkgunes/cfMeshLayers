@@ -348,7 +348,7 @@ void Foam::Module::partTriMesh::createBufferLayers()
                         continue;
                     }
 
-                    sendToProcs.appendIfNotIn(neiProc);
+                    sendToProcs.appendUniq(neiProc);
                 }
             }
         }
@@ -374,7 +374,7 @@ void Foam::Module::partTriMesh::createBufferLayers()
                         pAtBufferLayers.append(pt[j]);
                     }
 
-                    pProcs.appendIfNotIn(pt[j], sendToProcs[i]);
+                    pProcs.appendUniq(pt[j], sendToProcs[i]);
                 }
             }
         }
@@ -412,7 +412,7 @@ void Foam::Module::partTriMesh::createBufferLayers()
                 {
                     // point is already added into the triangulation
                     triPointLabels[j] = newGlobalToLocal[gpI];
-                    pProcs.appendIfNotIn(newGlobalToLocal[gpI], it->first);
+                    pProcs.appendUniq(newGlobalToLocal[gpI], it->first);
                 }
                 else
                 {
