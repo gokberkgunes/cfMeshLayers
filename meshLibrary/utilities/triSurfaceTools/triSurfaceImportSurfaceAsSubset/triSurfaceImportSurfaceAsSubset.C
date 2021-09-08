@@ -32,6 +32,7 @@ License
 #include "meshOctree.H"
 #include "meshOctreeCreator.H"
 #include "helperFunctions.H"
+#include "demandDrivenData.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

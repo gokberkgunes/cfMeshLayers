@@ -30,6 +30,7 @@ License
 
 #include "polyMeshGenGeometryModification.H"
 #include "dictionary.H"
+#include "demandDrivenData.H"
 
 // * * * * * * * * * * * * * * Private Member Functions  * * * * * * * * * * //
 

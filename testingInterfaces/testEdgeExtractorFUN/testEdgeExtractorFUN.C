@@ -37,6 +37,7 @@ Description
 #include "meshOctree.H"
 #include "meshOctreeCreator.H"
 #include "triSurfacePatchManipulator.H"
+#include "demandDrivenData.H"
 
 using namespace Foam;
 using namespace Foam::Module;

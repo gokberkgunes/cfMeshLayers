@@ -30,6 +30,7 @@ License
 
 #include "boundaryLayerOptimisation.H"
 #include "meshSurfacePartitioner.H"
+#include "demandDrivenData.H"
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 

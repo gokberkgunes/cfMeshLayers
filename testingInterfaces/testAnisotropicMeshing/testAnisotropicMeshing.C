@@ -37,6 +37,7 @@ Description
 #include "coordinateModifier.H"
 #include "surfaceMeshGeometryModification.H"
 #include "polyMeshGenGeometryModification.H"
+#include "demandDrivenData.H"
 
 using namespace Foam;
 using namespace Foam::Module;

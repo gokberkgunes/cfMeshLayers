@@ -49,6 +49,7 @@ License
 #include "meshSurfaceMapper.H"
 #include "meshSurfaceCheckInvertedVertices.H"
 #include "meshSurfaceCheckEdgeTypes.H"
+#include "demandDrivenData.H"
 
 # ifdef USE_OMP
 #include <omp.h>

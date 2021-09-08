@@ -35,9 +35,9 @@ Description
 #include "polyMeshGen.H"
 #include "helperFunctions.H"
 #include "triSurfacePatchManipulator.H"
-
 #include "polyMeshGenChecks.H"
 #include "HashSet.H"
+#include "demandDrivenData.H"
 
 using namespace Foam;
 using namespace Foam::Module;

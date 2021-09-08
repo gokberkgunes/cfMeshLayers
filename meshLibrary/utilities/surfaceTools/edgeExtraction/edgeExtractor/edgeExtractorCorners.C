@@ -46,6 +46,7 @@ License
 #include "HashSet.H"
 #include "triSurfacePartitioner.H"
 #include "triSurfaceClassifyEdges.H"
+#include "demandDrivenData.H"
 
 # ifdef USE_OMP
 #include <omp.h>

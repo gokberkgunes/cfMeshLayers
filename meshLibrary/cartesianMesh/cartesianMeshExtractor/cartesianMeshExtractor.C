@@ -30,6 +30,7 @@ License
 
 #include "cartesianMeshExtractor.H"
 #include "meshOctree.H"
+#include "demandDrivenData.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
