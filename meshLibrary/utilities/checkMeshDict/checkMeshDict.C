@@ -1055,7 +1055,7 @@ void Foam::Module::checkMeshDict::updateRenameBoundary
         const dictionary& dict = meshDict_.subDict("renameBoundary");
 
         // transfer or generate default name/type entries
-        for (const word& keyName : { "defaultName", "defaultType" })
+        for (word keyName : { "defaultName", "defaultType" })
         {
             word wval;
             if (dict.readIfPresent(keyName, wval))
