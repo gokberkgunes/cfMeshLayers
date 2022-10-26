@@ -5,6 +5,11 @@ ifeq (,$(strip $(FOAM_MODULE_LIBBIN)))
     FOAM_MODULE_LIBBIN = $(FOAM_USER_LIBBIN)
 endif
 
+/* Define USE_OMP if -fopenmp (-qopenmp etc) found */
+ifneq (,$(findstring openmp,$(COMP_OPENMP)))
+    COMP_OPENMP += -DUSE_OMP
+endif
+
 EXE_INC = \
     $(COMP_OPENMP) \
     -I$(LIB_SRC)/fileFormats/lnInclude \

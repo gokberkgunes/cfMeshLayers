@@ -67,11 +67,11 @@ int main(int argc, char *argv[])
     pointField& pts = sMod.pointsAccess();
 
     // scales the vertices
-    # ifdef USE_OMP
-    # pragma omp parallel for schedule(dynamic, 100)
-    # endif
+    #pragma omp parallel for schedule(dynamic, 100)
     forAll(pts, pointI)
+    {
         pts[pointI] *= scalingFactor;
+    }
 
     // write the mesh back on disk
     surface.writeSurface(outFileName);
