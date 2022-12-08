@@ -38,10 +38,6 @@ License
 #include "labelledPair.H"
 #include "labelledScalar.H"
 
-# ifdef USE_OMP
-#include <omp.h>
-# endif
-
 //#define DEBUGLayer
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

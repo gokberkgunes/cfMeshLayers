@@ -32,10 +32,6 @@ License
 #include "labelLongList.H"
 #include "labelledPair.H"
 
-# ifdef USE_OMP
-#include <omp.h>
-# endif
-
 #include <set>
 #include <map>
 

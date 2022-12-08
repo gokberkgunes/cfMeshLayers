@@ -35,10 +35,6 @@ License
 #include "labelledScalar.H"
 #include "polyMeshGenAddressing.H"
 
-# ifdef USE_OMP
-#include <omp.h>
-# endif
-
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 void Foam::Module::boundaryLayerOptimisation::hairEdgesAtBndFace

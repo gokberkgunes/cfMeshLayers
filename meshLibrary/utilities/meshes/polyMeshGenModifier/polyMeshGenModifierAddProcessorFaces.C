@@ -31,9 +31,7 @@ License
 #include "polyMeshGenModifier.H"
 #include "demandDrivenData.H"
 
-# ifdef USE_OMP
-#include <omp.h>
-# endif
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 void Foam::Module::polyMeshGenModifier::addProcessorFaces
 (

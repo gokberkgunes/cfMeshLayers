@@ -37,10 +37,6 @@ License
 
 #include <map>
 
-# ifdef USE_OMP
-#include <omp.h>
-# endif
-
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 void Foam::Module::meshSurfaceCheckInvertedVertices::checkVertices()

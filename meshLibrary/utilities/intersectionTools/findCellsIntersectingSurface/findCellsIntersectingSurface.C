@@ -39,10 +39,6 @@ License
 #include "HashSet.H"
 #include "demandDrivenData.H"
 
-# ifdef USE_OMP
-#include <omp.h>
-# endif
-
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 void Foam::Module::findCellsIntersectingSurface::generateOctree

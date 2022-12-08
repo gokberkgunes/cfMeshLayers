@@ -33,10 +33,6 @@ License
 #include "helperFunctionsPar.H"
 #include "sortEdgesIntoChains.H"
 
-# ifdef USE_OMP
-#include <omp.h>
-# endif
-
 //#define DEBUGCheck
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

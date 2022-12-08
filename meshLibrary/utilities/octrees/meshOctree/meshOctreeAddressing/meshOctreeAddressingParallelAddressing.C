@@ -35,10 +35,6 @@ License
 
 #include <map>
 
-# ifdef USE_OMP
-#include <omp.h>
-# endif
-
 //#define DEBUGAddressing
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

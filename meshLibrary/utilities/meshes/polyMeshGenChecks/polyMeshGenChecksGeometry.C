@@ -30,10 +30,6 @@ License
 #include "tetrahedron.H"
 #include "syncTools.H"
 
-# ifdef USE_OMP
-#include <omp.h>
-# endif
-
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 bool Foam::Module::polyMeshGenChecks::checkClosedBoundary

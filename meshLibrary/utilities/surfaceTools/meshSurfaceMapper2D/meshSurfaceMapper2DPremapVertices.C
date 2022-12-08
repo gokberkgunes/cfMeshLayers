@@ -36,10 +36,6 @@ License
 #include "refLabelledPoint.H"
 #include "helperFunctionsPar.H"
 
-# ifdef USE_OMP
-#include <omp.h>
-# endif
-
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 void Foam::Module::meshSurfaceMapper2D::preMapVertices(const label nIterations)

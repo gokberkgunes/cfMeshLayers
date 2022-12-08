@@ -34,10 +34,6 @@ License
 #include "polyMeshGenModifierAddCellByCell.H"
 #include "demandDrivenData.H"
 
-# ifdef USE_OMP
-#include <omp.h>
-# endif
-
 // #define DEBUGTets
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

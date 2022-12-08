@@ -35,10 +35,6 @@ License
 #include "meshOctreeCreator.H"
 #include "helperFunctions.H"
 
-#ifdef USE_OMP
-#include <omp.h>
-# endif
-
 //#define DEBUGSurfaceChecks
 
 # ifdef DEBUGSurfaceChecks

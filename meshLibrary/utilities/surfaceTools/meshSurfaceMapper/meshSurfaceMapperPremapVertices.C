@@ -38,10 +38,6 @@ License
 #include "helperFunctions.H"
 #include "meshSurfaceOptimizer.H"
 
-# ifdef USE_OMP
-#include <omp.h>
-# endif
-
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 void Foam::Module::meshSurfaceMapper::preMapVertices(const label nIterations)

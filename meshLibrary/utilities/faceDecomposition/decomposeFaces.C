@@ -31,10 +31,6 @@ License
 #include "decomposeFaces.H"
 #include "boolList.H"
 
-# ifdef USE_OMP
-#include <omp.h>
-# endif
-
 //#define DEBUGDec
 
 # ifdef DEBUGDec

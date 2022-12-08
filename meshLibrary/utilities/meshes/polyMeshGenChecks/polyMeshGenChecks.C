@@ -37,10 +37,6 @@ License
 #include "ListOps.H"
 #include "Map.H"
 
-# ifdef USE_OMP
-#include <omp.h>
-# endif
-
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 bool Foam::Module::polyMeshGenChecks::checkGeometry

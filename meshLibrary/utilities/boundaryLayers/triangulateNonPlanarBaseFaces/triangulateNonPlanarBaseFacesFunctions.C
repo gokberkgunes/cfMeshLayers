@@ -35,10 +35,6 @@ License
 #include "meshSurfacePartitioner.H"
 #include "triangle.H"
 
-# ifdef USE_OMP
-#include <omp.h>
-# endif
-
 //#define DEBUGLayer
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

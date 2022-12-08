@@ -33,10 +33,6 @@ License
 #include "labelLongList.H"
 #include "boolList.H"
 
-# ifdef USE_OMP
-#include <omp.h>
-# endif
-
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 void Foam::Module::triSurfacePartitioner::calculatePatchAddressing()

@@ -32,10 +32,6 @@ License
 #include "polyMeshGenAddressing.H"
 #include "demandDrivenData.H"
 
-# ifdef USE_OMP
-#include <omp.h>
-# endif
-
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 void Foam::Module::polyMeshGen2DEngine::findActiveFaces() const

@@ -35,10 +35,6 @@ License
 #include "meshSurfacePartitioner.H"
 #include "labelledPointScalar.H"
 
-# ifdef USE_OMP
-#include <omp.h>
-# endif
-
 #ifdef DEBUGExtrudeLayer
 #include "polyMeshGenChecks.H"
 #endif

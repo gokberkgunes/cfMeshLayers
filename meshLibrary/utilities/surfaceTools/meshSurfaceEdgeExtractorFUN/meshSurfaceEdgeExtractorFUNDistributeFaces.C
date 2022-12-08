@@ -40,10 +40,6 @@ License
 #include "meshSurfaceCheckEdgeTypes.H"
 #include "meshSurfaceEngine.H"
 
-# ifdef USE_OMP
-#include <omp.h>
-# endif
-
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 void Foam::Module::meshSurfaceEdgeExtractorFUN::distributeBoundaryFaces()

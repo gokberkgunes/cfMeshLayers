@@ -33,10 +33,6 @@ License
 #include "polyMeshGenAddressing.H"
 #include "meshSurfaceEngine.H"
 
-# ifdef USE_OMP
-#include <omp.h>
-# endif
-
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 void Foam::Module::meshOptimizer::laplaceSmoother::laplacian

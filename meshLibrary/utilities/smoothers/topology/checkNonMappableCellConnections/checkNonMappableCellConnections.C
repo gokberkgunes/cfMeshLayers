@@ -33,10 +33,6 @@ License
 #include "helperFunctions.H"
 #include "meshSurfaceEngine.H"
 
-# ifdef USE_OMP
-#include <omp.h>
-# endif
-
 // * * * * * * * * * * Private member functions * * * * * * * * * * * * * * * //
 
 void Foam::Module::checkNonMappableCellConnections::findCellTypes()

@@ -35,10 +35,6 @@ License
 #include "meshOctree.H"
 #include "labelPair.H"
 
-#ifdef USE_OMP
-#include <omp.h>
-#endif
-
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 void Foam::Module::triSurfaceClassifyEdges::checkOrientation()

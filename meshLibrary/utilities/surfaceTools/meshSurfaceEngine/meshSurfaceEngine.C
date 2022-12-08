@@ -31,10 +31,6 @@ License
 #include "meshSurfaceEngine.H"
 #include "demandDrivenData.H"
 
-# ifdef USE_OMP
-#include <omp.h>
-# endif
-
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
 Foam::Module::meshSurfaceEngine::meshSurfaceEngine(polyMeshGen& mesh)
