@@ -12,5 +12,7 @@ EXE_INC = \
     -I../../meshLibrary/lnInclude
 
 EXE_LIBS = \
+    -lfileFormats \
+    -lsurfMesh \
     -lmeshTools \
     -L$(FOAM_MODULE_LIBBIN) -lmeshLibrary
