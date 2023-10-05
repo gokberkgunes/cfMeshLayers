@@ -290,7 +290,8 @@ void Foam::Module::cartesianMeshGenerator::generateMesh()
     {
         mapEdgesAndCorners();
 
-        optimiseMeshSurface();
+        /* This option decreases quality rather than optimizing it. */
+        /* optimiseMeshSurface(); */
     }
 
     if (controller_.runCurrentStep("boundaryLayerGeneration"))
