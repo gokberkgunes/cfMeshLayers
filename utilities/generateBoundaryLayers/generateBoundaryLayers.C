@@ -47,13 +47,16 @@ void generateLayer
 (
     polyMeshGen& mesh,
     const dictionary& meshDict,
-    const bool layers2D
+    const bool layers2D,
+    const bool skipEmpty
 )
 {
     boundaryLayers bl(mesh);
 
     if (layers2D)
         bl.activate2DMode();
+    if (skipEmpty)
+        bl.skipEmptyPatches();
 
     if (meshDict.found("boundaryLayers"))
     {
@@ -121,6 +124,7 @@ int main(int argc, char *argv[])
     );
 
     argList::addBoolOption("2DLayers");
+    argList::addBoolOption("skipEmpty");
 
     #include "setRootCase.H"
     #include "createTime.H"
@@ -142,9 +146,11 @@ int main(int argc, char *argv[])
     pmg.read();
 
     const bool is2DLayer = args.found("2DLayers");
+    const bool isNoEmpty = args.found("skipEmpty");
 
     // generate the initial boundary layer
-    generateLayer(pmg, meshDict, is2DLayer);
+    generateLayer(pmg, meshDict, is2DLayer, isNoEmpty);
+
 
     // optimisation of mesh quality
     meshOptimisation(pmg);

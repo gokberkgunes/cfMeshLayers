@@ -36,6 +36,7 @@ License
 #include "meshSurfaceCheckInvertedVertices.H"
 #include "meshSurfacePartitioner.H"
 #include "polyMeshGen2DEngine.H"
+#include "polyMeshGenModifier.H"
 
 #include "labelledPoint.H"
 #include <map>
@@ -57,7 +58,7 @@ Foam::Module::boundaryLayers::surfaceEngine() const
 }
 
 
-const Foam::Module::meshSurfacePartitioner& 
+const Foam::Module::meshSurfacePartitioner&
 Foam::Module::boundaryLayers::surfacePartitioner() const
 {
     if (!meshPartitionerPtr_)
@@ -732,6 +733,32 @@ void Foam::Module::boundaryLayers::activate2DMode()
     is2DMesh_ = true;
 }
 
+void Foam::Module::boundaryLayers::skipEmptyPatches()
+{
+    polyMeshGenModifier meshModifier(mesh_);
+
+    // find all the patches tagges as empty
+    forAll(treatPatchesWithPatch_, patchI)
+    {
+        boundaryPatch& patch = meshModifier.boundariesAccess()[patchI];
+        if (patch.patchType() == "empty")
+            treatedPatch_[patchI] = true;
+    }
+
+    // remove tagged empty patches from to layer list
+    forAll(treatPatchesWithPatch_, patchI)
+    {
+        DynList<label>& patches = treatPatchesWithPatch_[patchI];
+
+        for (label i = patches.size()-1; i>=0; --i)
+        {
+            if (treatedPatch_[patches[i]])
+            {
+                patches.removeElement(i);
+            }
+        }
+    }
+}
 
 void Foam::Module::boundaryLayers::addLayerForAllPatches()
 {

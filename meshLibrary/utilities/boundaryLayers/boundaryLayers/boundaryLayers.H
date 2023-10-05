@@ -283,6 +283,18 @@ public:
         //- used as a flag prior to addLayerForAllPatches
         void activate2DMode();
 
+        // - Avoid generating layers for 3D empty patches. This useful for
+        // - adding multiple boundary layers by repetitively running
+        // - generateBoundaryLayers command. Since, generateBoundaryLayers will
+        // - keep adding layers for every single patch, rather than only walls.
+        //
+        // - However, this option may cause mesh quality issues.
+        //
+        // - Such an issue was aparent for a volume mesh created with
+        //   snappyHexMesh's castellation and snapping phases; adding boundary
+        //   layers only on specific patches caused very high skewness.
+        void skipEmptyPatches();
+
         //- add layers for all patches
         void addLayerForAllPatches();
 
